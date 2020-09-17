@@ -1,14 +1,20 @@
 .travel-background {
+  @include displayFlexWithPadding(20px 40px);
+  justify-content: center;
   position: relative;
   background: url(../images/travel-tracker-default-bg.jpg) no-repeat center;
   background-size: cover;
   height: 70vh;
-  padding: 20px 40px;
+
+  h2 {
+    position: absolute;
+    top: 75%;
+  }
 
   .new-trip {
     position: absolute;
     top: 85%;
-    background-color: gray;
+    background-color: white;
     opacity: 0.8;
     border: 1px solid black;
     border-radius: 10px;
