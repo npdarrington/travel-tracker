@@ -27,4 +27,12 @@
   @include displayFlexWithPaddingAndMargin(20px);
   flex-wrap: wrap;
   margin-top: 20px;
+
+  .trip-card {
+    @include displayFlexWithPaddingAndMargin(10px, 20px, column);
+    align-content: center;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+  }
 }
