@@ -6,7 +6,7 @@
     padding: $padding;
   }
 
-  @if $padding != 0 {
+  @if $margin != 0 {
     margin: $margin;
   }
 }
