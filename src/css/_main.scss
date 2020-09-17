@@ -32,7 +32,16 @@
     @include displayFlexWithPaddingAndMargin(10px, 20px, column);
     align-content: center;
     background-color: white;
+    width: 250px;
     border: 1px solid black;
     border-radius: 5px;
+
+    h4 {
+      text-align: center;
+    }
+
+    img {
+      width: 100%;
+    }
   }
 }
