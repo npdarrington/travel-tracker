@@ -46,10 +46,15 @@ describe('Traveler', () => {
   it('Sort a travelers destination trip data into past trips for past trips that have ended', () => {
     traveler.sortTripsByStatus("2019/09/18", tripsData);
     expect(traveler.pastTrips[0]).to.deep.eq(tripsData[3]);
-  })
+  });
 
   it('Sort a travelers destination trip data into current trips for current trips they are on', () => {
     traveler.sortTripsByStatus("2019/09/18", tripsData);
     expect(traveler.currentTrips[0]).to.deep.eq(tripsData[2]);
-  })
+  });
+
+  it('Sort a travelers destination trip data into upcoming trips for current trips that have been approved', () => {
+    traveler.sortTripsByStatus("2019/09/18", tripsData);
+    expect(traveler.upcomingTrips[0]).to.deep.eq(tripsData[0]);
+  });
 });
