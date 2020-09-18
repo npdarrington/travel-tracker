@@ -10,7 +10,7 @@ describe('Trip', () => {
   let traveler, trip;
   beforeEach(() => {
     traveler = new Traveler(travelerData[0]);
-    trip = new Trip(traveler.id, destinationData[3].id, 6, '2019/09/18', 20);
+    trip = new Trip(1000, traveler.id, destinationData[3].id, 6, '2019/09/18', 20);
   });
 
   it('A Trip should be an instance of a trip', () => {
@@ -18,6 +18,10 @@ describe('Trip', () => {
   });
 
   describe('Trip Properties', () => {
+    it('The trip should have an id', () => {
+      expect(trip.id).to.eq(1000);
+    });
+
     it('Should have the traveler that is logged in be the main reference for the trip', () => {
       expect(trip.userID).to.eq(1);
     });
@@ -58,6 +62,6 @@ describe('Trip', () => {
 
     it('Should store the end date that is factored from the start date of the trip', () => {
       expect(trip.endDate).to.eq('2019/10/08');
-    })
+    });
   });
 })
