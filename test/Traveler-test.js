@@ -57,4 +57,9 @@ describe('Traveler', () => {
     traveler.sortTripsByStatus("2019/09/18", tripsData);
     expect(traveler.upcomingTrips[0]).to.deep.eq(tripsData[0]);
   });
+
+  it('Sort a travelers destination trip data into pending trips for current trips that have not been approved', () => {
+    traveler.sortTripsByStatus("2019/09/18", tripsData);
+    expect(traveler.pendingTrips[0]).to.deep.eq(tripsData[1]);
+  });
 });
