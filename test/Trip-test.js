@@ -47,5 +47,9 @@ describe('Trip', () => {
     it('Should allow the user to enter in the amount of days duration for a trip', () => {
       expect(trip.duration).to.eq(20);
     });
+
+    it('Should default all newly booked trips status to pending', () => {
+      expect(trip.status).to.eq('pending');
+    });
   });
 })
