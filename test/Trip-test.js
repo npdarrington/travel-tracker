@@ -10,7 +10,7 @@ describe('Trip', () => {
   let traveler, trip;
   beforeEach(() => {
     traveler = new Traveler(travelerData[0]);
-    trip = new Trip(traveler.id, destinationData[3].id, 6);
+    trip = new Trip(traveler.id, destinationData[3].id, 6, '2019/09/18');
   });
 
   it('A Trip should be an instance of a trip', () => {
@@ -33,6 +33,10 @@ describe('Trip', () => {
 
     it('Should be able to take in as many travelers as the person who books the trip allows', () => {
       expect(trip.travelers).to.eq(6);
-    })
+    });
+
+    it('Should have a trip that the Trip was booked for', () => {
+      expect(trip.date).to.eq('2019/09/18');
+    });
   });
 })
