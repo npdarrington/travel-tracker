@@ -13,6 +13,8 @@ export default class Traveler {
     tripsData.forEach(trip => {
       if (trip.date < currentDate && trip.status === "approved") {
         this.pastTrips.push(trip);
+      } else if (currentDate >= trip.date && currentDate <= (trip.date + trip.duration) && trip.status === "approved") {
+        this.currentTrips.push(trip);
       }
     })
   }
