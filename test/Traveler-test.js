@@ -9,4 +9,9 @@ describe('Traveler', () => {
   beforeEach(() => {
     traveler = new Traveler(travelerData[0]);
   });
+
+  it('A traveler should have an id', () => {
+    console.log(traveler);
+    expect(traveler.id).to.eq(1);
+  });
 });
