@@ -10,7 +10,7 @@ describe('Trip', () => {
   let traveler, trip;
   beforeEach(() => {
     traveler = new Traveler(travelerData[0]);
-    trip = new Trip(traveler.id, destinationData[3].id);
+    trip = new Trip(traveler.id, destinationData[3].id, 6);
   });
 
   it('A Trip should be an instance of a trip', () => {
@@ -30,5 +30,9 @@ describe('Trip', () => {
       trip = new Trip(traveler.id, destinationData[3].id);
       expect(trip.travelers).to.eq(1);
     });
+
+    it('Should be able to take in as many travelers as the person who books the trip allows', () => {
+      expect(trip.travelers).to.eq(6);
+    })
   });
 })
