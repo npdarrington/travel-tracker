@@ -1,5 +1,3 @@
-import trips from "../test/test-data/trips-test-data";
-
 export default class Traveler {
   constructor({ id, name, travelerType }) {
     this.id = id;
