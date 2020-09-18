@@ -4,6 +4,7 @@ export default class Traveler {
     this.name = name;
     this.travelerType = travelerType;
     this.pastTrips = [];
+    this.currentTrips = [];
   }
 
   // trips
