@@ -78,3 +78,6 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+
+# Images .DS_Store file
+src/images/.DS_Store
