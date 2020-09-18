@@ -22,7 +22,4 @@ export default class Traveler {
       }
     })
   }
-
-  // trips
-  // 0 = upcoming, 1 = pending, 2 = current, 3 = past, 4 = dummy data
 }
