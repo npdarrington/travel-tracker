@@ -10,7 +10,7 @@ describe('Trip', () => {
   let traveler, trip;
   beforeEach(() => {
     traveler = new Traveler(travelerData[0]);
-    trip = new Trip(traveler.id, destinationData[3].id, 6, '2019/09/18');
+    trip = new Trip(traveler.id, destinationData[3].id, 6, '2019/09/18', 20);
   });
 
   it('A Trip should be an instance of a trip', () => {
@@ -42,6 +42,10 @@ describe('Trip', () => {
     it('Should have a default duration of at least 1 day for a trip', () => {
       trip = new Trip(traveler.id, destinationData[3].id, 6, '2019/09/18');
       expect(trip.duration).to.eq(1);
+    });
+
+    it('Should allow the user to enter in the amount of days duration for a trip', () => {
+      expect(trip.duration).to.eq(20);
     });
   });
 })
