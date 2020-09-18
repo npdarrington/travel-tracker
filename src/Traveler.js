@@ -1,5 +1,5 @@
 export default class Traveler {
-  constructor() {
-
+  constructor({ id }) {
+    this.id = id;
   }
 }
