@@ -51,5 +51,9 @@ describe('Trip', () => {
     it('Should default all newly booked trips status to pending', () => {
       expect(trip.status).to.eq('pending');
     });
+
+    it('Should default all newly booked trips should start with an array of empty activities', () => {
+      expect(trip.suggestedActivities).to.deep.eq([]);
+    });
   });
 })
