@@ -25,4 +25,8 @@ describe('Traveler', () => {
   it('A traveler should be able to have multiple traveler type values', () => {
     expect(traveler.travelerType).to.eq('relaxer');
   });
+
+  it('A traveler should instantiate with an empty array of past trips they have taken', () => {
+    expect(traveler.pastTrips).to.deep.eq([]);
+  });
 });
