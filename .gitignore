@@ -81,3 +81,7 @@ typings/
 
 # Images .DS_Store file
 src/images/.DS_Store
+
+# Partial ignores
+src/Time.js
+test/Time-test.js
