@@ -1,5 +1,5 @@
 export default class Trip {
-  constructor() {
-    
+  constructor(userID) {
+    this.userID = userID;
   }
 }
