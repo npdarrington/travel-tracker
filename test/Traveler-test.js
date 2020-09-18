@@ -33,4 +33,8 @@ describe('Traveler', () => {
   it('A traveler should instantiate with an empty array of current trips they are currently on', () => {
     expect(traveler.currentTrips).to.deep.eq([]);
   });
+
+  it('A traveler should instantiate with an empty array of current trips that are upcoming', () => {
+    expect(traveler.upcomingTrips).to.deep.eq([]);
+  });
 });
