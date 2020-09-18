@@ -22,8 +22,7 @@ describe('Traveler', () => {
     expect(traveler.name).to.eq('Ham Leadbeater');
   });
 
-  it('A traveler should have a traveler type that is default an empty array', () => {
-    traveler = new Traveler({ id: 1, name: "Ham Leadbeater" })
-    expect(traveler.travelerType).to.be.deep.eq([]);
+  it('A traveler should be able to have multiple traveler type values', () => {
+    expect(traveler.travelerType).to.eq('relaxer');
   });
 });
