@@ -47,4 +47,9 @@ describe('Traveler', () => {
     traveler.sortTripsByStatus("2019/09/18", tripsData);
     expect(traveler.pastTrips[0]).to.deep.eq(tripsData[3]);
   })
+
+  it('Sort a travelers destination trip data into current trips for current trips they are on', () => {
+    traveler.sortTripsByStatus("2019/09/18", tripsData);
+    expect(traveler.currentTrips[0]).to.deep.eq(tripsData[2]);
+  })
 });
