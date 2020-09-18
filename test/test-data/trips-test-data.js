@@ -1,4 +1,4 @@
-export const trips = [
+const trips = [
   {
     id:	117,
     userID:	1,
@@ -50,3 +50,5 @@ export const trips = [
     suggestedActivities:	[]
   }
 ]
+
+export default trips;
