@@ -5,5 +5,6 @@ export default class Trip {
     this.travelers = travelers;
     this.date = date;
     this.duration = duration;
+    this.status = 'pending';
   }
 }
