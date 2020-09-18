@@ -6,6 +6,7 @@ export default class Traveler {
     this.pastTrips = [];
     this.currentTrips = [];
     this.upcomingTrips = [];
+    this.pendingTrips = [];
   }
 
   // trips
