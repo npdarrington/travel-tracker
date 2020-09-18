@@ -1,7 +1,7 @@
 export default class Traveler {
-  constructor({ id, name, travelerType = [] }) {
+  constructor({ id, name, travelerType }) {
     this.id = id;
     this.name = name;
-    this.travelerType = [];
+    this.travelerType = travelerType;
   }
 }
