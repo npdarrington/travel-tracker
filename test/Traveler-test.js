@@ -15,7 +15,10 @@ describe('Traveler', () => {
   });
 
   it('A traveler should have an id', () => {
-    console.log(traveler);
     expect(traveler.id).to.eq(1);
+  });
+
+  it('A traveler should have a name', () => {
+    expect(traveler.name).to.eq('Ham Leadbeater');
   });
 });
