@@ -1,3 +1,5 @@
+import trips from "../test/test-data/trips-test-data";
+
 export default class Traveler {
   constructor({ id, name, travelerType }) {
     this.id = id;
@@ -17,6 +19,8 @@ export default class Traveler {
         this.currentTrips.push(trip);
       } else if (currentDate <= trip.date && trip.status === "approved") {
         this.upcomingTrips.push(trip);
+      } else if (trip.status === "pending") {
+        this.pendingTrips.push(trip);
       }
     })
   }
