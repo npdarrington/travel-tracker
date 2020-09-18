@@ -6,5 +6,6 @@ export default class Trip {
     this.date = date;
     this.duration = duration;
     this.status = 'pending';
+    this.suggestedActivities = [];
   }
 }
