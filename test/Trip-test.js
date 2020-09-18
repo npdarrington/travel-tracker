@@ -38,5 +38,10 @@ describe('Trip', () => {
     it('Should have a trip that the Trip was booked for', () => {
       expect(trip.date).to.eq('2019/09/18');
     });
+
+    it('Should have a default duration of at least 1 day for a trip', () => {
+      trip = new Trip(traveler.id, destinationData[3].id, 6, '2019/09/18');
+      expect(trip.duration).to.eq(1);
+    });
   });
 })
