@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export default class Traveler {
   constructor({ id, name, travelerType }) {
     this.id = id;
@@ -13,7 +15,7 @@ export default class Traveler {
     tripsData.forEach(trip => {
       if (trip.date < currentDate && trip.status === "approved") {
         this.pastTrips.push(trip);
-      } else if (currentDate >= trip.date && currentDate <= (trip.date + trip.duration) && trip.status === "approved") {
+      } else if (currentDate >= trip.date && currentDate <= moment(new Date(trip.date)).add(trip.duration, 'd').format('YYYY/MM/DD') && trip.status === "approved") {
         this.currentTrips.push(trip);
       } else if (currentDate <= trip.date && trip.status === "approved") {
         this.upcomingTrips.push(trip);
