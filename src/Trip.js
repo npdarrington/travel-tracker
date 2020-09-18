@@ -1,7 +1,8 @@
 import moment from 'moment'
 
 export default class Trip {
-  constructor(userID, destinationID, travelers = 1, date, duration = 1) {
+  constructor(id, userID, destinationID, travelers = 1, date, duration = 1) {
+    this.id = id;
     this.userID = userID;
     this.destinationID = destinationID;
     this.travelers = travelers;
