@@ -25,5 +25,10 @@ describe('Trip', () => {
     it('Should have a destination id that the trip selection was booked for', () => {
       expect(trip.destinationID).to.eq(4);
     });
+
+    it('Should have a default number of travelers as 1, for the traveler who booked the trip', () => {
+      trip = new Trip(traveler.id, destinationData[3].id);
+      expect(trip.travelers).to.eq(1);
+    });
   });
 })
