@@ -12,7 +12,9 @@ describe('Trip', () => {
     trip = new Trip();
   });
 
-  describe('Trip Properties', () => {
-    
+  it('A Trip should be an instance of a trip', () => {
+    expect(trip).to.be.an.instanceof(Trip);
   });
+
+  
 })
