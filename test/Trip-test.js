@@ -55,5 +55,9 @@ describe('Trip', () => {
     it('Should default all newly booked trips should start with an array of empty activities', () => {
       expect(trip.suggestedActivities).to.deep.eq([]);
     });
+
+    it('Should store the end date that is factored from the start date of the trip', () => {
+      expect(trip.endDate).to.eq('2019/10/08');
+    })
   });
 })
