@@ -15,6 +15,8 @@ export default class Traveler {
         this.pastTrips.push(trip);
       } else if (currentDate >= trip.date && currentDate <= (trip.date + trip.duration) && trip.status === "approved") {
         this.currentTrips.push(trip);
+      } else if (currentDate <= trip.date && trip.status === "approved") {
+        this.upcomingTrips.push(trip);
       }
     })
   }
