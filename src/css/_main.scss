@@ -1,0 +1,61 @@
+.travel-background {
+  @include displayFlexWithPaddingAndMargin(20px 40px);
+  justify-content: center;
+  position: relative;
+  background: url(../images/travel-tracker-default-bg.jpg) no-repeat center;
+  background-size: cover;
+  height: 70vh;
+
+  h2 {
+    position: absolute;
+    top: 75%;
+  }
+
+  .new-trip {
+    @include displayFlexWithPaddingAndMargin(10px);
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 85%;
+    background-color: white;
+    opacity: 0.8;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 50px;
+    width: 95%;
+
+    form > label {
+      margin-left: 15px;
+    }
+
+    form > input {
+      width: 175px;
+      margin-left: 5px;
+    }
+  }
+}
+
+.trip-organizer {
+  @include displayFlexWithPaddingAndMargin(20px);
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+
+  .trip-card {
+    @include displayFlexWithPaddingAndMargin(10px, 20px, column);
+    align-content: center;
+    background-color: white;
+    width: 250px;
+    border: 1px solid black;
+    border-radius: 5px;
+
+    h4 {
+      text-align: center;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+}

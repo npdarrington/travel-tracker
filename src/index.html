@@ -10,22 +10,77 @@
       <!-- Header Logo -- Don't think that any other links are needed!! -->
     </header>
     <main>
-      <section class="travel-background"><!-- Background Image --></section>
-      <section class="new-trip">
-
+      <section class="travel-background">
+        <h2 class="travel-background-cta">Let's book your next getaway right away!</h2>
+        <section class="new-trip">
+          <form>
+            <label for="new-trip-date">Select Your Date:</label>
+            <input type="text" id="new-trip-date" name="new-trip-date" required>
+            <label for="new-trip-date">Number of Travelers:</label>
+            <input type="text" id="new-trip-travelers" name="new-trip-travelers" required>
+            <label for="new-trip-date">Trip Duration:</label>
+            <input type="text" id="new-trip-duration" name="new-trip-duration" required>
+            <label for="new-trip-date">Select Your Destination:</label>
+            <input type="text" id="new-trip-destination" name="new-trip-destination" required>
+          </form>
+        </section>
       </section>
       <section class="trip-organizer">
-        <article class="trip-previous">
-
+        <article class="trip-previous trip-card">
+          <h4 class="trip-card-title">Previous Trips</h4>
+          <section class="trip-information">
+            <article class="trip-picture">
+              <img src="./images/travel-tracker-default-bg.jpg" alt="Placeholder Photo">
+            </article>
+            <article class="trip-details">
+              <h4>Trip Title</h4>
+              <h4>Date | Duration</h4>
+              <h4># of Travelers</h4>
+              <h4>Trip Duration</h4>
+            </article>
+          </section>
         </article>
-        <article class="trip-current">
-
+        <article class="trip-current trip-card">
+          <h4 class="trip-card-title">Current Trips</h4>
+          <section class="trip-information">
+            <article class="trip-picture">
+              <img src="./images/travel-tracker-default-bg.jpg" alt="Placeholder Photo">
+            </article>
+            <article class="trip-details">
+              <h4>Trip Title</h4>
+              <h4>Date | Duration</h4>
+              <h4># of Travelers</h4>
+              <h4>Trip Duration</h4>
+            </article>
+          </section>
         </article>
-        <article class="trip-upcoming">
-
+        <article class="trip-upcoming trip-card">
+          <h4 class="trip-card-title">Upcoming Trips</h4>
+          <section class="trip-information">
+            <article class="trip-picture">
+              <img src="./images/travel-tracker-default-bg.jpg" alt="Placeholder Photo">
+            </article>
+            <article class="trip-details">
+              <h4>Trip Title</h4>
+              <h4>Date | Duration</h4>
+              <h4># of Travelers</h4>
+              <h4>Trip Duration</h4>
+            </article>
+          </section>
         </article>
-        <article class="trip-pending">
-          
+        <article class="trip-pending trip-card">
+          <h4 class="trip-card-title">Pending Trips</h4>
+          <section class="trip-information">
+            <article class="trip-picture">
+              <img src="./images/travel-tracker-default-bg.jpg" alt="Placeholder Photo">
+            </article>
+            <article class="trip-details">
+              <h4>Trip Title</h4>
+              <h4>Date | Duration</h4>
+              <h4># of Travelers</h4>
+              <h4>Trip Duration</h4>
+            </article>
+          </section>
         </article>
       </section>
     </main>

@@ -1,0 +1,12 @@
+@mixin displayFlexWithPaddingAndMargin($padding: 0, $margin: 0, $direction: row) {
+  display: flex;
+  flex-direction: $direction;
+
+  @if $padding != 0 {
+    padding: $padding;
+  }
+
+  @if $margin != 0 {
+    margin: $margin;
+  }
+}
