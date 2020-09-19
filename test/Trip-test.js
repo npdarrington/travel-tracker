@@ -10,7 +10,7 @@ describe('Trip', () => {
   let traveler, trip;
   beforeEach(() => {
     traveler = new Traveler(travelerData[0]);
-    trip = new Trip(1000, traveler.id, destinationData[3].id, 6, '2019/09/18', 20);
+    trip = new Trip(1000, traveler.id, destinationData[3].id, '2019/09/18', 6, 20);
   });
 
   it('A Trip should be an instance of a trip', () => {
@@ -77,7 +77,7 @@ describe('Trip', () => {
 
   describe('Edit Trip Method', () => {
     it('Should be able to edit a user\'s trip', () => {
-      expect(trip.editTrip(1, 16, 2, '2019/12/11', 4)).to.deep.eq({
+      expect(trip.editTrip(1, 16, '2019/12/11', 2, 4)).to.deep.eq({
         id: 1000,
         userID: 1,
         destinationID: 16,
