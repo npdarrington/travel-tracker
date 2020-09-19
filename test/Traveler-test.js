@@ -5,7 +5,7 @@ import tripsData from './test-data/trips-test-data';
 import Traveler from '../src/Traveler';
 import Trip from '../src/Trip';
 
-describe.only('Traveler', () => {
+describe('Traveler', () => {
   let traveler, trip, trip1, trip2, trip3, trip4, allTrips;
 
   beforeEach(() => {

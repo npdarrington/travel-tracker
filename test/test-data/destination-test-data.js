@@ -38,6 +38,14 @@ const destinationData = [
     estimatedFlightCostPerPerson:	650,
     image:	"https://images.unsplash.com/,photo-1543785734-4b6e564642f8?ixlib=rb-1.2.1&,ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&,w=1950&q=80",
     alt:	"city with clear skys and a road in the day time"
+  },
+  {
+    id:	28,
+    destination:	"San Juan, Puerto Rico",
+    estimatedLodgingCostPerDay:	70,
+    estimatedFlightCostPerPerson:	900,
+    image:	"https://images.unsplash.com/photo-1580237541049-2d715a09486e?,ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2090&,q=80",
+    alt:	"white and brown concrete buildings near sea under white clouds during daytime"
   }
 ]
 

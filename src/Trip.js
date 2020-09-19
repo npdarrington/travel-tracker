@@ -1,14 +1,14 @@
 import moment from 'moment'
 
 export default class Trip {
-  constructor(id, userID, destinationID, date, travelers = 1, duration = 1) {
+  constructor({ id, userID, destinationID, date, travelers = 1, duration = 1, status = 'pending' }) {
     this.id = id;
     this.userID = userID;
     this.destinationID = destinationID;
     this.date = date;
     this.travelers = travelers;
     this.duration = duration;
-    this.status = 'pending';
+    this.status = status;
     this.suggestedActivities = [];
     this.endDate = moment(new Date(this.date))
                     .add(this.duration, 'd').format('YYYY/MM/DD');
@@ -19,11 +19,11 @@ export default class Trip {
     let estimatedFlightCost = foundTrip.estimatedFlightCostPerPerson * this.travelers;
     let estimatedLodgingCost = foundTrip.estimatedLodgingCostPerDay * this.duration * this.duration;
     let travelAgentFee = (estimatedFlightCost + estimatedLodgingCost) * .10;
-    return +((((estimatedFlightCost + estimatedLodgingCost) + travelAgentFee) * 100) / 100).toFixed(2);
+    return ((((estimatedFlightCost + estimatedLodgingCost) + travelAgentFee) * 100) / 100).toFixed(2);
   }
 
-  editTrip(userID, destinationID, date, travelers = 1, duration = 1) {
-    return new Trip(this.id, userID, destinationID, date, travelers,  duration);
+  editTrip(id, userID, destinationID, date, travelers = 1, duration = 1, status = 'pending') {
+    return new Trip({ id, userID, destinationID, date, travelers,  duration, status });
   }
 
   deleteTrip(userID, tripID, tripData) {
