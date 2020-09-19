@@ -33,5 +33,9 @@ describe("Destination", () => {
     it('Should have an image to showcase the Destination', () => {
       expect(destination.image).to.eq('https://images.unsplash.com/,photo-1489171084589-9b5031ebcf9b?ixlib=rb-1.2.1&,ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&,w=2089&q=80');
     });
+
+    it('Should have an alt tag associated with the showcase image', () => {
+      expect(destination.alt).to.eq('overview of city buildings with a clear sky');
+    })
   })
 })
