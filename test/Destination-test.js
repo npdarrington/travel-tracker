@@ -20,6 +20,10 @@ describe("Destination", () => {
 
     it('Should have a destination', () => {
       expect(destination.destination).to.eq('Lima, Peru');
-    })
+    });
+
+    it('Should have an estimated lodging cost per day', () => {
+      expect(destination.estimatedLodgingCostPerDay).to.eq(70);
+    });
   })
 })
