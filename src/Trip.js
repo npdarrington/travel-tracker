@@ -1,14 +1,14 @@
 import moment from 'moment'
 
 export default class Trip {
-  constructor(id, userID, destinationID, date, travelers = 1, duration = 1) {
+  constructor({ id, userID, destinationID, date, travelers = 1, duration = 1, status = 'pending' }) {
     this.id = id;
     this.userID = userID;
     this.destinationID = destinationID;
     this.date = date;
     this.travelers = travelers;
     this.duration = duration;
-    this.status = 'pending';
+    this.status = status;
     this.suggestedActivities = [];
     this.endDate = moment(new Date(this.date))
                     .add(this.duration, 'd').format('YYYY/MM/DD');
