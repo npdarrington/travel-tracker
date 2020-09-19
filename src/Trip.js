@@ -22,8 +22,8 @@ export default class Trip {
     return ((((estimatedFlightCost + estimatedLodgingCost) + travelAgentFee) * 100) / 100).toFixed(2);
   }
 
-  editTrip(userID, destinationID, date, travelers = 1, duration = 1) {
-    return new Trip(this.id, userID, destinationID, date, travelers,  duration);
+  editTrip(id, userID, destinationID, date, travelers = 1, duration = 1, status = 'pending') {
+    return new Trip({ id, userID, destinationID, date, travelers,  duration, status });
   }
 
   deleteTrip(userID, tripID, tripData) {
