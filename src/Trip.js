@@ -14,6 +14,14 @@ export default class Trip {
                     .add(this.duration, 'd').format('YYYY/MM/DD');
   }
 
+  calculateTripPrice(destinationData) {
+    const foundTrip = destinationData.find(destination => destination.id === this.destinationID);
+    let estimatedFlightCost = foundTrip.estimatedFlightCostPerPerson * this.travelers;
+    let estimatedLodgingCost = foundTrip.estimatedLodgingCostPerDay * this.duration * this.duration;
+    let travelAgentFee = (estimatedFlightCost + estimatedLodgingCost) * .10;
+    return (((estimatedFlightCost + estimatedLodgingCost) + travelAgentFee) * 100) / 100;
+  }
+
   editTrip(userID, destinationID, date, travelers = 1, duration = 1) {
     return new Trip(this.id, userID, destinationID, date, travelers,  duration);
   }
