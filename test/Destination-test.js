@@ -9,7 +9,7 @@ describe("Destination", () => {
     destination = new Destination(destinationData[0]);
   });
 
-  it('Should be an instance of a destination', () => {
+  it('Should be an instance of a Destination', () => {
     expect(destination).to.be.an.instanceof(Destination);
   });
 
@@ -18,7 +18,7 @@ describe("Destination", () => {
       expect(destination.id).to.eq(1);
     });
 
-    it('Should have a destination', () => {
+    it('Should have a Destination', () => {
       expect(destination.destination).to.eq('Lima, Peru');
     });
 
@@ -28,6 +28,10 @@ describe("Destination", () => {
 
     it('Should have an estimated flight cost per person', () => {
       expect(destination.estimatedFlightCostPerPerson).to.eq(400);
+    });
+
+    it('Should have an image to showcase the Destination', () => {
+      expect(destination.image).to.eq('https://images.unsplash.com/,photo-1489171084589-9b5031ebcf9b?ixlib=rb-1.2.1&,ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&,w=2089&q=80');
     });
   })
 })
