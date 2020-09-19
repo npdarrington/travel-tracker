@@ -74,4 +74,20 @@ describe('Trip', () => {
       expect(trips.length).to.eq(2);
     })
   });
+
+  describe('Edit Trip Method', () => {
+    it('Should be able to edit a user\'s trip', () => {
+      expect(trip.editTrip(1, 16, 2, '2019/12/11', 4)).to.deep.eq({
+        id: 1000,
+        userID: 1,
+        destinationID: 16,
+        date: '2019/12/11',
+        travelers: 2,
+        duration: 4,
+        status: 'pending',
+        suggestedActivities: [],
+        endDate: '2019/12/15'
+      });
+    });
+  });
 })
