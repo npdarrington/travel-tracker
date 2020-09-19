@@ -3,12 +3,19 @@ const { expect } = require("chai");
 import travelerData from './test-data/traveler-test-data';
 import tripsData from './test-data/trips-test-data';
 import Traveler from '../src/Traveler';
+import Trip from '../src/Trip';
 
-describe('Traveler', () => {
-  let traveler;
+describe.only('Traveler', () => {
+  let traveler, trip, trip1, trip2, trip3, trip4;
 
   beforeEach(() => {
     traveler = new Traveler(travelerData[0]);
+    trip = new Trip(tripsData[0]);
+    trip1 = new Trip(tripsData[1]);
+    trip2 = new Trip(tripsData[2]);
+    trip3 = new Trip(tripsData[3]);
+    trip4 = new Trip(tripsData[4]);
+    allTrips = [trip, trip1, trip2, trip3, trip4];
   });
 
   describe('Traveler Properties', () => {
