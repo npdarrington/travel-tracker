@@ -13,4 +13,13 @@ export default class Trip {
     this.endDate = moment(new Date(this.date))
                     .add(this.duration, 'd').format('YYYY/MM/DD');
   }
+
+  deleteTrip(userID, tripID, tripData) {
+    tripData.forEach((trip, i) => {
+      if (trip.userID === userID && trip.id === tripID) {
+        tripData.splice(i, 1);
+      }
+    });
+    return tripData;
+  }
 }
