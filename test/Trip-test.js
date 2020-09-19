@@ -67,7 +67,7 @@ describe('Trip', () => {
   describe('Calculate Trip Price', () => {
     it('Should be able to tell the user how much the trip is going to cost', () => {
       trip = new Trip(1000, traveler.id, destinationData[3].id, '2019/09/18', 3, 5);
-      expect(trip.calculateTripPrice(destinationData)).to.eq((2942.50).toFixed(2));
+      expect(trip.calculateTripPrice(destinationData)).to.eq(+(2942.50).toFixed(2));
     });
   });
 
