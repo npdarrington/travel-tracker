@@ -8,4 +8,8 @@ describe("Destination", () => {
   beforeEach(() => {
     destination = new Destination();
   });
+
+  it('Should be an instance of a destination', () => {
+    expect(destination).to.be.an.instanceof(Destination);
+  });
 })
