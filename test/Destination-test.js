@@ -17,5 +17,9 @@ describe("Destination", () => {
     it('Should have an id', () => {
       expect(destination.id).to.eq(1);
     });
+
+    it('Should have a destination', () => {
+      expect(destination.destination).to.eq('Lima, Peru');
+    })
   })
 })
