@@ -103,5 +103,19 @@ describe('Trip', () => {
         endDate: '2019/12/12'
       });
     });
+
+    it('Should default to at least 1 day duration', () => {
+      expect(trip.editTrip(1, 16, '2019/12/11', 8)).to.deep.eq({
+        id: 1000,
+        userID: 1,
+        destinationID: 16,
+        date: '2019/12/11',
+        travelers: 8,
+        duration: 1,
+        status: 'pending',
+        suggestedActivities: [],
+        endDate: '2019/12/12'
+      });
+    });
   });
 })
