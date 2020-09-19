@@ -19,7 +19,7 @@ export default class Trip {
     let estimatedFlightCost = foundTrip.estimatedFlightCostPerPerson * this.travelers;
     let estimatedLodgingCost = foundTrip.estimatedLodgingCostPerDay * this.duration * this.duration;
     let travelAgentFee = (estimatedFlightCost + estimatedLodgingCost) * .10;
-    return (((estimatedFlightCost + estimatedLodgingCost) + travelAgentFee) * 100) / 100;
+    return ((((estimatedFlightCost + estimatedLodgingCost) + travelAgentFee) * 100) / 100).toFixed(2);
   }
 
   editTrip(userID, destinationID, date, travelers = 1, duration = 1) {
