@@ -14,6 +14,10 @@ export default class Trip {
                     .add(this.duration, 'd').format('YYYY/MM/DD');
   }
 
+  editTrip(userID, destinationID, travelers = 1, date, duration = 1) {
+    return new Trip(this.id, userID, destinationID, travelers, date, duration);
+  }
+
   deleteTrip(userID, tripID, tripData) {
     tripData.forEach((trip, i) => {
       if (trip.userID === userID && trip.id === tripID) {
