@@ -64,6 +64,13 @@ describe('Trip', () => {
     });
   });
 
+  describe('Calculate Trip Price', () => {
+    it('Should be able to tell the user how much the trip is going to cost', () => {
+      trip = new Trip(1000, traveler.id, destinationData[3].id, '2019/09/18', 3, 5);
+      expect(trip.calculateTripPrice(destinationData)).to.eq(2942.50);
+    });
+  });
+
   describe('Delete Trip Method', () => {
     it('Should be able to delete a user\'s trip', () => {
       const trip2 = new Trip(1001, 50, 4, 2, '2019/09/18', 5);
