@@ -6,7 +6,7 @@ import Traveler from '../src/Traveler';
 import Trip from '../src/Trip';
 
 describe.only('Traveler', () => {
-  let traveler, trip, trip1, trip2, trip3, trip4;
+  let traveler, trip, trip1, trip2, trip3, trip4, allTrips;
 
   beforeEach(() => {
     traveler = new Traveler(travelerData[0]);
@@ -54,23 +54,23 @@ describe.only('Traveler', () => {
   
   describe('Traveler sortTripsByStatus Method', () => {
     it('Sort a travelers destination trip data into past trips for past trips that have ended', () => {
-      traveler.sortTripsByStatus("2019/09/18", tripsData);
-      expect(traveler.pastTrips[0]).to.deep.eq(tripsData[3]);
+      traveler.sortTripsByStatus("2019/09/18", allTrips);
+      expect(traveler.pastTrips[0]).to.deep.eq(allTrips[3]);
     });
   
     it('Sort a travelers destination trip data into current trips for current trips they are on', () => {
-      traveler.sortTripsByStatus("2019/09/18", tripsData);
-      expect(traveler.currentTrips[0]).to.deep.eq(tripsData[2]);
+      traveler.sortTripsByStatus("2019/09/18", allTrips);
+      expect(traveler.currentTrips[0]).to.deep.eq(allTrips[2]);
     });
   
     it('Sort a travelers destination trip data into upcoming trips for current trips that have been approved', () => {
-      traveler.sortTripsByStatus("2019/09/18", tripsData);
-      expect(traveler.upcomingTrips[0]).to.deep.eq(tripsData[0]);
+      traveler.sortTripsByStatus("2019/09/18", allTrips);
+      expect(traveler.upcomingTrips[0]).to.deep.eq(allTrips[0]);
     });
   
     it('Sort a travelers destination trip data into pending trips for current trips that have not been approved', () => {
-      traveler.sortTripsByStatus("2019/09/18", tripsData);
-      expect(traveler.pendingTrips[0]).to.deep.eq(tripsData[1]);
+      traveler.sortTripsByStatus("2019/09/18", allTrips);
+      expect(traveler.pendingTrips[0]).to.deep.eq(allTrips[1]);
     });
   });
 });
