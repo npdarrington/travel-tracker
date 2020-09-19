@@ -1,5 +1,6 @@
 export default class Destination {
-  constructor({ id }) {
+  constructor({ id, destination }) {
     this.id = id;
+    this.destination = destination;
   }
 }
