@@ -64,4 +64,14 @@ describe('Trip', () => {
       expect(trip.endDate).to.eq('2019/10/08');
     });
   });
+
+  describe('Delete Trip Method', () => {
+    it('Should be able to delete a user\'s trip', () => {
+      const trip2 = new Trip(1001, 50, 4, 2, '2019/09/18', 5);
+      const trip3 = new Trip(1002, 20, 3, 1, '2019/09/18', 2);
+      const trips = [trip, trip2, trip3];
+      trip.deleteTrip(1, trip.id, trips);
+      expect(trips.length).to.eq(2);
+    })
+  });
 })
