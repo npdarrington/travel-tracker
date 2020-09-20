@@ -12,6 +12,14 @@ const getSingleTraveler = id => {
   return fetch(`${urlStart}travelers/travelers/${id}`)
     .then(response => response.json())
     .then(data => {
-      return data.travelers
+      return data.travelers;
     });
+}
+
+const getAllTrips = () => {
+  return fetch(`${urlStart}trips/trips`)
+    .then(response => response.json())
+    .then(data => {
+      return data.trips;
+    })
 }
