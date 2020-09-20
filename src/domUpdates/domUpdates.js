@@ -7,6 +7,10 @@ const domUpdates = {
     this.todaysDate = todaysDate;
   },
 
+  updatePageOnLogin() {
+    this.displayCurrentUser();
+  },
+
   displayCurrentUser() {
     document.querySelector('#user-name').innerText = `${this.currentUser.getFirstName()}'s Travel Tracker`;
   }
