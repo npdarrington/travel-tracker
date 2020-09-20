@@ -1,5 +1,3 @@
-import { relativeTimeThreshold } from "moment";
-
 const domUpdates = {
   currentTraveler: null,
   todaysDate: null,
