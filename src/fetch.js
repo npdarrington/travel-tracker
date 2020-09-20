@@ -21,5 +21,13 @@ const getAllTrips = () => {
     .then(response => response.json())
     .then(data => {
       return data.trips;
-    })
+    });
+}
+
+const getAllDestinations = () => {
+  return fetch(`${urlStart}destinations/destinations`)
+    .then(response => response.json())
+    .then(data => {
+      return data.destinations;
+    });
 }
