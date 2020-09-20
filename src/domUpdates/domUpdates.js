@@ -15,6 +15,7 @@ const domUpdates = {
   updatePageOnLogin() {
     this.displayCurrentTraveler();
     this.sortTravelerTrips();
+    this.populateDestinationsOnDOM();
     this.tripTimelines.forEach(time => {
       this.displayAllTravelerTrips(time);
     });
@@ -22,6 +23,14 @@ const domUpdates = {
 
   displayCurrentTraveler() {
     document.querySelector('.travel-background-cta').innerText = `Let's book your next getaway ${this.currentTraveler.getFirstName()}!`;
+  },
+
+  populateDestinationsOnDOM() {
+    let targetDropDownSelect = document.querySelector('#new-trip-destination');
+    this.allDestinationData.forEach(destination => {
+      let newDestinationOption = `<option value=${destination.id}>${destination.destination}</option>`;
+      targetDropDownSelect.insertAdjacentHTML("beforeend", newDestinationOption);
+    });
   },
 
   sortTravelerTrips() {
