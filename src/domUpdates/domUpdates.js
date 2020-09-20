@@ -1,18 +1,18 @@
 const domUpdates = {
-  currentUser: null,
+  currentTraveler: null,
   todaysDate: null,
 
   setGlobalData(user, todaysDate) {
-    this.currentUser = user;
+    this.currentTraveler = user;
     this.todaysDate = todaysDate;
   },
 
   updatePageOnLogin() {
-    this.displayCurrentUser();
+    this.displayCurrentTraveler();
   },
 
-  displayCurrentUser() {
-    document.querySelector('#user-name').innerText = `${this.currentUser.getFirstName()}'s Travel Tracker`;
+  displayCurrentTraveler() {
+    document.querySelector('.travel-background-cta').innerText = `Let's book your next getaway ${this.currentTraveler.getFirstName()}!`;
   }
 }
 
