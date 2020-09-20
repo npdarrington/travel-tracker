@@ -29,7 +29,7 @@ const getAllInfoOnLogin = () => {
         let newDestination = new Destination(destination);
         allDestinationsData.push(newDestination);
       });
-      currentTraveler = new Traveler(data[2][Math.floor(Math.random() * data.length)]);
+      currentTraveler = new Traveler(data[2][Math.floor(Math.random() * data[2].length)]);
       todaysDate = moment().format('YYYY/MM/DD');
       domUpdates.setGlobalData(currentTraveler, todaysDate, allTripsData, allDestinationsData);
       domUpdates.updatePageOnLogin();

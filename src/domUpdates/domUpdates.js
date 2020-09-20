@@ -13,23 +13,41 @@ const domUpdates = {
 
   updatePageOnLogin() {
     this.displayCurrentTraveler();
+    this.sortTravelerTrips();
     this.displayTravelerPastTrips();
+    this.displayTravelerCurrentTrips();
   },
 
   displayCurrentTraveler() {
     document.querySelector('.travel-background-cta').innerText = `Let's book your next getaway ${this.currentTraveler.getFirstName()}!`;
   },
 
+  sortTravelerTrips() {
+    this.currentTraveler.sortTripsByStatus(this.todaysDate, this.allTripsData);
+  },
+
   displayTravelerPastTrips() {
     let tripPreviousDOM = document.querySelector('.trip-previous');
     let tripPreviousDOMTitle = document.querySelector('.trip-previous > .trip-card-title');
-    this.currentTraveler.sortTripsByStatus(this.todaysDate, this.allTripsData);
     if (!this.currentTraveler.pastTrips.length) {
       tripPreviousDOMTitle.innerText = `You have no past trips`;
     } else {
       this.currentTraveler.pastTrips.forEach(trip => {
         let displayTrip = this.buildHTMLForTrips(trip);
         tripPreviousDOM.insertAdjacentHTML('beforeend', displayTrip);
+      });
+    }
+  },
+
+  displayTravelerCurrentTrips() {
+    let tripCurrentDOM = document.querySelector('.trip-current');
+    let tripCurrentDOMTitle = document.querySelector('.trip-current > .trip-card-title');
+    if (!this.currentTraveler.currentTrips.length) {
+      tripCurrentDOMTitle.innerText = `You have no current trips`;
+    } else {
+      this.currentTraveler.currentTrips.forEach(trip => {
+        let displayTrip = this.buildHTMLForTrips(trip);
+        tripCurrentDOM.insertAdjacentHTML('beforeend', displayTrip);
       });
     }
   },

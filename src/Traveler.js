@@ -15,11 +15,12 @@ export default class Traveler {
 
   sortTripsByStatus(currentDate, tripsData) {
     const getAllUserTrips = tripsData.filter(trip => trip.userID === this.id);
+    getAllUserTrips.sort((tripA, tripB) => new Date(tripA.date) - new Date(tripB.date));
     getAllUserTrips.forEach(trip => {
-      if (trip.date < currentDate && trip.status === "approved") {
-        this.pastTrips.push(trip);
-      } else if (currentDate >= trip.date && currentDate <= trip.endDate && trip.status === "approved") {
+      if (currentDate >= trip.date && currentDate <= trip.endDate && trip.status === "approved") {
         this.currentTrips.push(trip);
+      } else if (trip.date < currentDate && trip.status === "approved") {
+        this.pastTrips.push(trip);
       } else if (currentDate <= trip.date && trip.status === "approved") {
         this.upcomingTrips.push(trip);
       } else if (trip.status === "pending") {
