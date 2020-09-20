@@ -9,6 +9,10 @@ export default class Traveler {
     this.pendingTrips = [];
   }
 
+  getFirstName() {
+    return this.name.split(' ')[0];
+  }
+
   sortTripsByStatus(currentDate, tripsData) {
     tripsData.forEach(trip => {
       if (trip.date < currentDate && trip.status === "approved") {
