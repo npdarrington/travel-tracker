@@ -15,13 +15,15 @@
         <section class="new-trip">
           <form>
             <label for="new-trip-date">Select Your Date:</label>
-            <input type="text" id="new-trip-date" name="new-trip-date" required>
+            <input type="date" id="new-trip-date" name="new-trip-date" title="You must select a date for your trip" required>
             <label for="new-trip-date">Number of Travelers:</label>
-            <input type="text" id="new-trip-travelers" name="new-trip-travelers" required>
+            <input type="number" id="new-trip-travelers" name="new-trip-travelers" title="You must enter at least 1 traveler, yourself, for the trip." placeholder="Enter the number of travlers." required>
             <label for="new-trip-date">Trip Duration:</label>
-            <input type="text" id="new-trip-duration" name="new-trip-duration" required>
+            <input type="number" id="new-trip-duration" name="new-trip-duration" title="You must enter at least 1 day for your trip." placeholder="How many days for your trip?" required>
             <label for="new-trip-date">Select Your Destination:</label>
-            <input type="text" id="new-trip-destination" name="new-trip-destination" required>
+            <select name="new-trip-destination" id="new-trip-destination">
+              <option value="-1" selected>Select A Destination</option>
+            </select>
           </form>
         </section>
       </section>
