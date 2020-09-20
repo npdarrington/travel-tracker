@@ -13,6 +13,12 @@ let currentTraveler, todaysDate;
 let allTripsData = [];
 let allDestinationsData = [];
 
+const getAllInfoOnLogin = () => {
+  getAllTripsData();
+  getAllDestinationData();
+  getTravelerData();
+}
+
 const getAllTripsData = () => {
   return fetches.getAllTrips()
     .then(data => {
@@ -33,8 +39,7 @@ const getAllDestinationData = () => {
       data.forEach(destination => {
         let newDestination = new Destination(destination);
         allDestinationsData.push(newDestination);
-      })
-      console.log(allDestinationsData)
+      });
     })
     .catch(err => {
       console.log(err.message);
@@ -47,7 +52,7 @@ const getTravelerData = () => {
     .then(data => {
       currentTraveler = new Traveler(data[Math.floor(Math.random() * data.length)]);
       todaysDate = moment().format('YYYY/MM/DD');
-      domUpdates.setGlobalData(currentTraveler, todaysDate);
+      domUpdates.setGlobalData(currentTraveler, todaysDate, allTripsData, allDestinationsData);
       domUpdates.updatePageOnLogin();
     })
     .catch(err => {
@@ -56,4 +61,4 @@ const getTravelerData = () => {
     })
 }
 
-window.addEventListener('load', getAllDestinationData);
+window.addEventListener('load', getAllInfoOnLogin);
