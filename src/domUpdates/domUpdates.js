@@ -1,3 +1,5 @@
+import { relativeTimeThreshold } from "moment";
+
 const domUpdates = {
   currentTraveler: null,
   todaysDate: null,
@@ -13,6 +15,7 @@ const domUpdates = {
 
   updatePageOnLogin() {
     this.displayCurrentTraveler();
+    this.sortTravelerTrips();
     this.displayTravelerPastTrips();
   },
 
@@ -20,10 +23,13 @@ const domUpdates = {
     document.querySelector('.travel-background-cta').innerText = `Let's book your next getaway ${this.currentTraveler.getFirstName()}!`;
   },
 
+  sortTravelerTrips() {
+    this.currentTraveler.sortTripsByStatus(this.todaysDate, this.allTripsData);
+  },
+
   displayTravelerPastTrips() {
     let tripPreviousDOM = document.querySelector('.trip-previous');
     let tripPreviousDOMTitle = document.querySelector('.trip-previous > .trip-card-title');
-    this.currentTraveler.sortTripsByStatus(this.todaysDate, this.allTripsData);
     if (!this.currentTraveler.pastTrips.length) {
       tripPreviousDOMTitle.innerText = `You have no past trips`;
     } else {
