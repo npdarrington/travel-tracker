@@ -14,7 +14,9 @@ const getTravelerData = () => {
     .then(data => {
       currentTraveler = new Traveler(data[Math.floor(Math.random() * data.length)]);
       todaysDate = moment().format('YYYY/MM/DD');
-    })
+      domUpdates.setGlobalData(currentTraveler, todaysDate);
+      domUpdates.updatePageOnLogin();
+    });
 }
 
 window.addEventListener('load', getTravelerData);
