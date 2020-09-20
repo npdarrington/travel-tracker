@@ -7,3 +7,11 @@ const getAllTravelers = () => {
       return data.travelers;
     });
 }
+
+const getSingleTraveler = id => {
+  return fetch(`${urlStart}travelers/travelers/${id}`)
+    .then(response => response.json())
+    .then(data => {
+      return data.travelers
+    });
+}
