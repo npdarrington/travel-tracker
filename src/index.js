@@ -14,51 +14,26 @@ let allTripsData = [];
 let allDestinationsData = [];
 
 const getAllInfoOnLogin = () => {
-  getAllTripsData();
-  getAllDestinationData();
-  getTravelerData();
-}
-
-const getAllTripsData = () => {
-  return fetches.getAllTrips()
+  let allFetchData = [
+    fetches.getAllTrips(),
+    fetches.getAllDestinations(),
+    fetches.getAllTravelers(),
+  ]
+  Promise.all(allFetchData)
     .then(data => {
-      data.forEach(trip => {
+      data[0].forEach(trip => {
         let newTrip = new Trip(trip);
         allTripsData.push(newTrip);
-      });
-    })
-    .catch(err => {
-      console.log(err.message);
-      return `Something went wrong and we were not able to get your trip data. Please refesh and try again!`;
-    });
-}
-
-const getAllDestinationData = () => {
-  return fetches.getAllDestinations()
-    .then(data => {
-      data.forEach(destination => {
+      })
+      data[1].forEach(destination => {
         let newDestination = new Destination(destination);
         allDestinationsData.push(newDestination);
       });
-    })
-    .catch(err => {
-      console.log(err.message);
-      return `Something went wrong and we were not able to load the available destination data. Please refesh and try again!`;
-    });
-}
-
-const getTravelerData = () => {
-  return fetches.getAllTravelers()
-    .then(data => {
-      currentTraveler = new Traveler(data[Math.floor(Math.random() * data.length)]);
+      currentTraveler = new Traveler(data[2][Math.floor(Math.random() * data.length)]);
       todaysDate = moment().format('YYYY/MM/DD');
       domUpdates.setGlobalData(currentTraveler, todaysDate, allTripsData, allDestinationsData);
       domUpdates.updatePageOnLogin();
-    })
-    .catch(err => {
-      console.log(err.message);
-      return `Something went wrong and we were not able to get your data. Please refesh and try again!`;
-    })
+    });
 }
 
 window.addEventListener('load', getAllInfoOnLogin);
