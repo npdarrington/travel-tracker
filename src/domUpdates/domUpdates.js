@@ -3,6 +3,7 @@ const domUpdates = {
   todaysDate: null,
   allTripsData: null,
   allDestinationData: null,
+  tripTimelines: ['past', 'current', 'upcoming', 'pending'],
 
   setGlobalData(user, todaysDate, allTripsData, allDestinationData) {
     this.currentTraveler = user;
@@ -14,10 +15,9 @@ const domUpdates = {
   updatePageOnLogin() {
     this.displayCurrentTraveler();
     this.sortTravelerTrips();
-    this.displayTravelerPastTrips();
-    this.displayTravelerCurrentTrips();
-    this.displayTravelerUpcomingTrips();
-    this.displayTravelerPendingTrips();
+    this.tripTimelines.forEach(time => {
+      this.displayAllTravelerTrips(time);
+    });
   },
 
   displayCurrentTraveler() {
@@ -28,54 +28,15 @@ const domUpdates = {
     this.currentTraveler.sortTripsByStatus(this.todaysDate, this.allTripsData);
   },
 
-  displayTravelerPastTrips() {
-    let tripPreviousDOM = document.querySelector('.trip-previous');
-    let tripPreviousDOMTitle = document.querySelector('.trip-previous > .trip-card-title');
-    if (!this.currentTraveler.pastTrips.length) {
-      tripPreviousDOMTitle.innerText = `You have no past trips`;
+  displayAllTravelerTrips(time) {
+    let targetDOMBody = document.querySelector(`.trip-${time}`);
+    let targetDOMTitle = document.querySelector(`.trip-${time} > .trip-card-title`);
+    if (!this.currentTraveler[`${time}Trips`].length) {
+      targetDOMTitle.innerText = `You have no ${time} trips`;
     } else {
-      this.currentTraveler.pastTrips.forEach(trip => {
+      this.currentTraveler[`${time}Trips`].forEach(trip => {
         let displayTrip = this.buildHTMLForTrips(trip);
-        tripPreviousDOM.insertAdjacentHTML('beforeend', displayTrip);
-      });
-    }
-  },
-
-  displayTravelerCurrentTrips() {
-    let tripCurrentDOM = document.querySelector('.trip-current');
-    let tripCurrentDOMTitle = document.querySelector('.trip-current > .trip-card-title');
-    if (!this.currentTraveler.currentTrips.length) {
-      tripCurrentDOMTitle.innerText = `You have no current trips`;
-    } else {
-      this.currentTraveler.currentTrips.forEach(trip => {
-        let displayTrip = this.buildHTMLForTrips(trip);
-        tripCurrentDOM.insertAdjacentHTML('beforeend', displayTrip);
-      });
-    }
-  },
-
-  displayTravelerUpcomingTrips() {
-    let tripUpcomingDOM = document.querySelector('.trip-upcoming');
-    let tripUpcomingDOMTitle = document.querySelector('.trip-upcoming > .trip-card-title');
-    if (!this.currentTraveler.upcomingTrips.length) {
-      tripUpcomingDOMTitle.innerText = `You have no upcoming trips`;
-    } else {
-      this.currentTraveler.upcomingTrips.forEach(trip => {
-        let displayTrip = this.buildHTMLForTrips(trip);
-        tripUpcomingDOM.insertAdjacentHTML('beforeend', displayTrip);
-      });
-    }
-  },
-
-  displayTravelerPendingTrips() {
-    let tripPendingDOM = document.querySelector('.trip-pending');
-    let tripPendingDOMTitle = document.querySelector('.trip-pending > .trip-card-title');
-    if (!this.currentTraveler.pendingTrips.length) {
-      tripPendingDOMTitle.innerText = `You have no pending trips`;
-    } else {
-      this.currentTraveler.pendingTrips.forEach(trip => {
-        let displayTrip = this.buildHTMLForTrips(trip);
-        tripPendingDOM.insertAdjacentHTML('beforeend', displayTrip);
+        targetDOMBody.insertAdjacentHTML('beforeend', displayTrip);
       });
     }
   },
@@ -89,8 +50,8 @@ const domUpdates = {
         </article>
         <article class="trip-details">
           <h4>${destinationData.destination}</h4>
-          <h4>${trip.date} for ${trip.duration} days</h4>
-          <h4>Brought ${trip.travelers} travelers</h4>
+          <h4>${trip.date} for ${trip.duration} day(s)</h4>
+          <h4>Brought ${trip.travelers} traveler(s)</h4>
         </article>
       </section>
     `;
