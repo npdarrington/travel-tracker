@@ -2,4 +2,10 @@ import './css/base.scss';
 
 import './images/turing-logo.png'
 
-console.log('This is the JavaScript entry file - your code begins here.');
+import fetches from './fetch';
+import domUpdates from './domUpdates/domUpdates';
+import Traveler from './Traveler'
+
+let currentTraveler, todaysDate;
+
+
