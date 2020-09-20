@@ -31,3 +31,10 @@ const getAllDestinations = () => {
       return data.destinations;
     });
 }
+
+export default {
+  getAllTravelers,
+  getSingleTraveler,
+  getAllTrips,
+  getAllDestinations
+}
