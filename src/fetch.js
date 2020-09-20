@@ -5,6 +5,10 @@ const getAllTravelers = () => {
     .then(response => response.json())
     .then(data => {
       return data.travelers;
+    })
+    .catch(err => {
+      console.log(err.message);
+      return `There was an error getting all of the travelers information.`;
     });
 }
 
@@ -13,6 +17,10 @@ const getSingleTraveler = id => {
     .then(response => response.json())
     .then(data => {
       return data.travelers;
+    })
+    .catch(err => {
+      console.log(err.message);
+      return `There was an error getting travelers #${id} information.`;
     });
 }
 
@@ -21,6 +29,10 @@ const getAllTrips = () => {
     .then(response => response.json())
     .then(data => {
       return data.trips;
+    })
+    .catch(err => {
+      console.log(err.message);
+      return `There was an error getting all of the trips information`;
     });
 }
 
@@ -29,6 +41,10 @@ const getAllDestinations = () => {
     .then(response => response.json())
     .then(data => {
       return data.destinations;
+    })
+    .catch(err => {
+      console.log(err.message);
+      return `There was an error getting all of the destinations information`;
     });
 }
 
