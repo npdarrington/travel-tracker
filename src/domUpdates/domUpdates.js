@@ -17,6 +17,7 @@ const domUpdates = {
     this.displayCurrentTraveler();
     this.sortTravelerTrips();
     this.displayTravelerPastTrips();
+    this.displayTravelerCurrentTrips();
   },
 
   displayCurrentTraveler() {
@@ -36,6 +37,19 @@ const domUpdates = {
       this.currentTraveler.pastTrips.forEach(trip => {
         let displayTrip = this.buildHTMLForTrips(trip);
         tripPreviousDOM.insertAdjacentHTML('beforeend', displayTrip);
+      });
+    }
+  },
+
+  displayTravelerCurrentTrips() {
+    let tripCurrentDOM = document.querySelector('.trip-current');
+    let tripCurrentDOMTitle = document.querySelector('.trip-current > .trip-card-title');
+    if (!this.currentTraveler.currentTrips.length) {
+      tripCurrentDOMTitle.innerText = `You have no current trips`;
+    } else {
+      this.currentTraveler.currentTrips.forEach(trip => {
+        let displayTrip = this.buildHTMLForTrips(trip);
+        tripCurrentDOM.insertAdjacentHTML('beforeend', displayTrip);
       });
     }
   },
