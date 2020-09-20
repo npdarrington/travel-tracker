@@ -5,6 +5,10 @@ const domUpdates = {
   setGlobalData(user, todaysDate) {
     this.currentUser = user;
     this.todaysDate = todaysDate;
+  },
+
+  displayCurrentUser() {
+    document.querySelector('#user-name').innerText = `${this.currentUser.getFirstName()}'s Travel Tracker`;
   }
 }
 
