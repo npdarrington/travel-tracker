@@ -17,6 +17,7 @@ const domUpdates = {
     this.displayTravelerPastTrips();
     this.displayTravelerCurrentTrips();
     this.displayTravelerUpcomingTrips();
+    this.displayTravelerPendingTrips();
   },
 
   displayCurrentTraveler() {
@@ -62,6 +63,19 @@ const domUpdates = {
       this.currentTraveler.upcomingTrips.forEach(trip => {
         let displayTrip = this.buildHTMLForTrips(trip);
         tripUpcomingDOM.insertAdjacentHTML('beforeend', displayTrip);
+      });
+    }
+  },
+
+  displayTravelerPendingTrips() {
+    let tripPendingDOM = document.querySelector('.trip-pending');
+    let tripPendingDOMTitle = document.querySelector('.trip-pending > .trip-card-title');
+    if (!this.currentTraveler.pendingTrips.length) {
+      tripPendingDOMTitle.innerText = `You have no pending trips`;
+    } else {
+      this.currentTraveler.pendingTrips.forEach(trip => {
+        let displayTrip = this.buildHTMLForTrips(trip);
+        tripPendingDOM.insertAdjacentHTML('beforeend', displayTrip);
       });
     }
   },
