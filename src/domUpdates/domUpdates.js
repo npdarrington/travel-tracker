@@ -70,7 +70,7 @@ const domUpdates = {
   displayTravelerYTDTotal() {
     const domTripYTDTitle = document.querySelector('.header-ytd-text');
     const yearlyYTDTotal = this.currentTraveler.getYTDTotal('2020', this.allTripsData, this.allDestinationData);
-    domTripYTDTitle.innerText = `You have spent $${yearlyYTDTotal} this year`
+    domTripYTDTitle.innerHTML = `2020 YTD Total<br>$${yearlyYTDTotal}`;
   }
 }
 
