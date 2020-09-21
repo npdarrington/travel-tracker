@@ -1,0 +1,30 @@
+header {
+  @include displayFlexWithPaddingAndMargin(10px);
+  align-items: center;
+  width: 100%;
+  height: auto;
+
+  .header-logo {
+    max-width: 100px;
+    margin-right: 40px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .header-title {
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+
+  .header-links > a {
+    margin: 10px 20px;
+  }
+
+  .header-ytd {
+    margin-left: auto;
+    margin-right: 2%;
+  }
+}

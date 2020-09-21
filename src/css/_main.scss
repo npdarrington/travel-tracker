@@ -1,61 +1,98 @@
 .travel-background {
   @include displayFlexWithPaddingAndMargin(20px 40px);
   justify-content: center;
-  position: relative;
   background: url(../images/travel-tracker-default-bg.jpg) no-repeat center;
   background-size: cover;
   height: 70vh;
+}
+
+.form-submission {
+  @include displayFlexWithPaddingAndMargin(10px 20px, 0, column);
 
   h2 {
-    position: absolute;
-    top: 75%;
+    text-align: center;
   }
 
   .new-trip {
-    @include displayFlexWithPaddingAndMargin(10px);
-    justify-content: space-between;
+    @include displayFlexWithPaddingAndMargin(10px, 0, column);
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    position: absolute;
-    top: 85%;
-    background-color: white;
     opacity: 0.8;
-    border: 1px solid black;
-    border-radius: 10px;
-    height: 50px;
-    width: 95%;
+    width: 100%;
 
-    form > label {
+    & > * {
+      margin: 5px 0;
+    }
+
+    label {
       margin-left: 15px;
     }
 
-    form > input {
-      width: 175px;
+    input {
+      width: 125px;
       margin-left: 5px;
+    }
+
+    #new-trip-duration, #new-trip-travelers {
+      width: 60px;
+    }
+
+    @media screen and (max-width: 730px) {
+      #new-trip-duration, #new-trip-travelers {
+        width: 265px;
+      }
+
+      .new-trip-top, .new-trip-bottom {
+        @include displayFlexWithPaddingAndMargin(0, 0, column);
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        & > * {
+          margin: 5px 0;
+        }
+
+        & input {
+          width: 265px;
+        }
+      } 
     }
   }
 }
 
 .trip-organizer {
-  @include displayFlexWithPaddingAndMargin(20px);
-  flex-wrap: wrap;
-  justify-content: space-between;
+  @include displayFlexWithPaddingAndMargin(20px, 10px, column);
   margin-top: 20px;
+  flex-flow: column;
+  text-align: center;
 
-  .trip-card {
-    @include displayFlexWithPaddingAndMargin(10px, 20px, column);
-    align-content: center;
-    background-color: white;
-    width: 250px;
-    border: 1px solid black;
-    border-radius: 5px;
+  .trip-organizer-cards {
+    @include displayFlexWithPaddingAndMargin();
+    justify-content: center;
+    flex-wrap: wrap;
 
-    h4 {
-      text-align: center;
-    }
-
-    img {
-      width: 100%;
+    .trip-card {
+      @include displayFlexWithPaddingAndMargin(10px, 20px, column);
+      align-content: center;
+      background-color: white;
+      min-width: 300px;
+      width: 500px;
+      border: 1px solid black;
+      border-radius: 5px;
+  
+      h3 {
+        text-align: center;
+      }
+  
+      img {
+        width: 100%;
+      }
+  
+      .trip-details {
+        @include displayFlexWithPaddingAndMargin(0, 0, column);
+        text-align: center
+      }
     }
   }
 }

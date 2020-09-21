@@ -3,44 +3,54 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/jpg" href="./images/travel-tracker-logo.png"/>
     <title>Travel Tracker</title>
   </head>
   <body>
     <header>
-      <!-- Header Logo -- Don't think that any other links are needed!! -->
+      <section class="header-logo">
+        <img src="./images/travel-tracker-logo.png" alt="Travel Tracker">
+      </section>
+      <section class="header-title">
+        <h1>Travel Tracker</h1>
+      </section>
+      <section class="header-links">
+        <a href="#">Past Trips</a>
+        <a href="#">Current Trips</a>
+        <a href="#">Upcoming Trips</a>
+        <a href="#">Pending Trips</a>
+      </section>
+      <section class="header-ytd">
+        <p class="header-ytd-text">You have spent $15000 this year</p>
+      </section>
     </header>
     <main>
-      <section class="travel-background">
+      <section class="travel-background"></section>
+      <section class="form-submission">
         <h2 class="travel-background-cta">Let's book your next getaway right away!</h2>
         <section class="new-trip">
-          <form>
+          <section class="new-trip-top">
             <label for="new-trip-date">Select Your Date:</label>
-            <input type="date" id="new-trip-date" name="new-trip-date" title="You must select a date for your trip" required>
-            <label for="new-trip-date">Number of Travelers:</label>
-            <input type="number" id="new-trip-travelers" name="new-trip-travelers" title="You must enter at least 1 traveler, yourself, for the trip." placeholder="Enter the number of travlers." min="1" required>
-            <label for="new-trip-date">Trip Duration:</label>
-            <input type="number" id="new-trip-duration" name="new-trip-duration" title="You must enter at least 1 day for your trip." placeholder="How many days for your trip?" min="1" required>
+            <input type="date" id="new-trip-date" name="new-trip-date" title="You must select a date for your trip" aria-describedby="Select the start date you want to book your trip for." required>
+            <label for="new-trip-travelers">Number of Travelers:</label>
+            <input type="number" id="new-trip-travelers" name="new-trip-travelers" title="You must enter at least 1 traveler, yourself, for the trip." min="1" value= "1" aria-describedby="Enter the number of travelers for your trip. There must be at least one traveler for your trip. Enter as a number." required autocomplete="off">
+            <label for="new-trip-duration">Trip Duration:</label>
+            <input type="number" id="new-trip-duration" name="new-trip-duration" title="You must enter at least 1 day for your trip." min="1" value="1" aria-describedby="Enter the number of days you want to schedule your trip for. There must be a minimum of one day entered. Enter as a number." required autocomplete="off">
+          </section>
+          <section class="new-trip-bottom">
             <label for="new-trip-destination">Select Your Destination:</label>
             <select name="new-trip-destination" id="new-trip-destination">
-              <option value="-1" selected>Select A Destination</option>
+              <option value="-1" aria-describedby="Select the destination of your trip. This is a drop down menu where you can select one option." selected>Select A Destination</option>
             </select>
-            <input type="button" value="Submit" id="btnSubmit">
-          </form>
+            <input type="button" value="Submit" id="btnSubmit" aria-describedby="Click this button to finalize and submit your new trip details.">
+          </section>
         </section>
       </section>
       <section class="trip-organizer">
-        <article class="trip-past trip-card">
-          <h4 class="trip-card-title">Past Trips</h4>
-        </article>
-        <article class="trip-current trip-card">
-          <h4 class="trip-card-title">Current Trips</h4>
-        </article>
-        <article class="trip-upcoming trip-card">
-          <h4 class="trip-card-title">Upcoming Trips</h4>
-        </article>
-        <article class="trip-pending trip-card">
-          <h4 class="trip-card-title">Pending Trips</h4>
-        </article>
+        <section class="trip-organizer-title">
+          <h3></h3>
+        </section class="trip-organizer-title">
+        <section class="trip-organizer-cards"></section>
       </section>
     </main>
   </body>
