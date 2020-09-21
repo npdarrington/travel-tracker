@@ -12,6 +12,7 @@ import moment from 'moment';
 let currentTraveler, todaysDate;
 let allTripsData = [];
 let allDestinationsData = [];
+const submitNewTripBtn = document.querySelector('#btnSubmit');
 
 const getAllInfoOnLogin = () => {
   let allFetchData = [
@@ -43,15 +44,16 @@ const newTripSubmission = () => {
   let getDuration = document.querySelector('#new-trip-duration').value;
   let newTripEntry = {
     id: Date.now(),
-    userID: currentTraveler.id,
-    destinationID: getDestinationID,
+    userID: +currentTraveler.id,
+    destinationID: +getDestinationID,
     date: moment(new Date(selectedDate)).format('YYYY/MM/DD'),
-    travelers: getTravelerCount, 
-    duration: getDuration,
+    travelers: +getTravelerCount, 
+    duration: +getDuration,
     status: 'pending',
     suggestedActivities: []
   }
-  // insert fetch call here with newTripEntry as argument
+  fetches.postNewlyBookedTrip(newTripEntry);
 }
 
 window.addEventListener('load', getAllInfoOnLogin);
+submitNewTripBtn.addEventListener('click', newTripSubmission);
