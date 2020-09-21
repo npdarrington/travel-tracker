@@ -16,16 +16,16 @@
         <section class="new-trip">
           <form>
             <label for="new-trip-date">Select Your Date:</label>
-            <input type="date" id="new-trip-date" name="new-trip-date" title="You must select a date for your trip" required>
+            <input type="date" id="new-trip-date" name="new-trip-date" title="You must select a date for your trip" aria-describedby="Select the start date you want to book your trip for." required>
             <label for="new-trip-travelers">Number of Travelers:</label>
-            <input type="number" id="new-trip-travelers" name="new-trip-travelers" title="You must enter at least 1 traveler, yourself, for the trip." placeholder="Enter the number of travlers." min="1" required>
+            <input type="number" id="new-trip-travelers" name="new-trip-travelers" title="You must enter at least 1 traveler, yourself, for the trip." min="1" aria-describedby="Enter the number of travelers for your trip. There must be at least one traveler for your trip. Enter as a number." required>
             <label for="new-trip-duration">Trip Duration:</label>
-            <input type="number" id="new-trip-duration" name="new-trip-duration" title="You must enter at least 1 day for your trip." placeholder="How many days for your trip?" min="1" required>
+            <input type="number" id="new-trip-duration" name="new-trip-duration" title="You must enter at least 1 day for your trip." aria-describedby="Enter the number of days you want to schedule your trip for. There must be a minimum of one day entered. Enter as a number." required>
             <label for="new-trip-destination">Select Your Destination:</label>
             <select name="new-trip-destination" id="new-trip-destination">
-              <option value="-1" selected>Select A Destination</option>
+              <option value="-1" aria-describedby="Select the destination of your trip. This is a drop down menu where you can select one option." selected>Select A Destination</option>
             </select>
-            <input type="button" value="Submit" id="btnSubmit">
+            <input type="button" value="Submit" id="btnSubmit" aria-describedby="Click this button to finalize and submit your new trip details.">
           </form>
         </section>
       </section>
