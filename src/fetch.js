@@ -48,9 +48,23 @@ const getAllDestinations = () => {
     });
 }
 
+const postNewlyBookedTrip = tripInformation => {
+  return fetch(`${urlStart}trips/trips`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(tripInformation)
+  })
+    .then(response => response.json())
+    .then(data => console.log('success:', data))
+    .catch(err => console.log('failed', err.message));
+}
+
 export default {
   getAllTravelers,
   getSingleTraveler,
   getAllTrips,
-  getAllDestinations
+  getAllDestinations,
+  postNewlyBookedTrip
 }
