@@ -48,6 +48,16 @@ const trips = [
     duration:	11,
     status:	"approved",
     suggestedActivities:	[]
+  },
+  {
+    id:	2,
+    userID:	1,
+    destinationID:	6,
+    travelers:	5,
+    date:	"2020/10/04",
+    duration:	18,
+    status:	"approved",
+    suggestedActivities:	[]
   }
 ]
 
