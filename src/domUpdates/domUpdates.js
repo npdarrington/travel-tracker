@@ -16,6 +16,7 @@ const domUpdates = {
     this.sortTravelerTrips();
     this.populateDestinationsOnDOM();
     this.displayAllTravelerTrips('upcoming');
+    this.displayTravelerYTDTotal();
   },
 
   displayCurrentTraveler() {
@@ -64,6 +65,12 @@ const domUpdates = {
         </section>
       </article>
     `;
+  },
+
+  displayTravelerYTDTotal() {
+    const domTripYTDTitle = document.querySelector('.header-ytd-text');
+    const yearlyYTDTotal = this.currentTraveler.getYTDTotal('2020', this.allTripsData, this.allDestinationData);
+    domTripYTDTitle.innerText = `You have spent $${yearlyYTDTotal} this year`
   }
 }
 
