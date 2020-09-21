@@ -3,10 +3,11 @@ header {
   align-items: center;
   width: 100%;
   height: auto;
+  font-family: $monserrat-font;
 
   .header-logo {
     max-width: 100px;
-    margin-right: 40px;
+    margin-right: 20px;
 
     img {
       width: 100%;
@@ -20,11 +21,26 @@ header {
   }
 
   .header-links > a {
-    margin: 10px 20px;
+    color: $blue-text-color;
+    margin: 10px;
+    border-bottom: 1px solid transparent;
+    text-decoration: none;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: $orange-text-color;
+      border-bottom: 1px solid $orange-text-color;
+      cursor: pointer;
+    }
+
+    @media screen and (max-width: 800px) {
+      @include displayFlexWithPaddingAndMargin(0, 0, column);
+    }
   }
 
   .header-ytd {
     margin-left: auto;
     margin-right: 2%;
+    text-align: center;
   }
 }
