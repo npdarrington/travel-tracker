@@ -7,34 +7,56 @@
 }
 
 .form-submission {
-  @include displayFlexWithPaddingAndMargin(10 20px, 0, column);
-  align-content: center;
-  justify-items: center;
-  background-color: whitesmoke;
+  @include displayFlexWithPaddingAndMargin(10px 20px, 0, column);
 
   h2 {
     text-align: center;
   }
 
   .new-trip {
-    @include displayFlexWithPaddingAndMargin(10px);
+    @include displayFlexWithPaddingAndMargin(10px, 0, column);
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     opacity: 0.8;
     width: 100%;
 
-    form > label {
+    & > * {
+      margin: 5px 0;
+    }
+
+    label {
       margin-left: 15px;
     }
 
-    form > input {
+    input {
       width: 125px;
       margin-left: 5px;
     }
 
-    form > #new-trip-duration, form > #new-trip-travelers {
+    #new-trip-duration, #new-trip-travelers {
       width: 60px;
+    }
+
+    @media screen and (max-width: 730px) {
+      #new-trip-duration, #new-trip-travelers {
+        width: 265px;
+      }
+
+      .new-trip-top, .new-trip-bottom {
+        @include displayFlexWithPaddingAndMargin(0, 0, column);
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        & > * {
+          margin: 5px 0;
+        }
+
+        & input {
+          width: 265px;
+        }
+      } 
     }
   }
 }
@@ -53,7 +75,7 @@
     border: 1px solid black;
     border-radius: 5px;
 
-    h4 {
+    h3 {
       text-align: center;
     }
 
