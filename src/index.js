@@ -46,7 +46,7 @@ const newTripSubmission = () => {
     id: Date.now(),
     userID: +currentTraveler.id,
     destinationID: +getDestinationID,
-    date: moment(new Date(selectedDate)).format('YYYY/MM/DD'),
+    date: moment.utc((new Date(selectedDate))).format('YYYY/MM/DD'),
     travelers: +getTravelerCount, 
     duration: +getDuration,
     status: 'pending',
