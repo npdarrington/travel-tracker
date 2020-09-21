@@ -1,6 +1,6 @@
 import './css/base.scss';
 
-import './images/turing-logo.png'
+import './images/travel-tracker-logo.png';
 
 import fetches from './fetch';
 import domUpdates from './domUpdates/domUpdates';
