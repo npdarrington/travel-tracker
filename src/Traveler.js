@@ -28,4 +28,22 @@ export default class Traveler {
       }
     })
   }
+
+  getYTDTotal(currentYear, tripsData, destinationData) {
+    const getAllUserTripsThisYear = tripsData.filter(trip => {
+      return this.id === trip.userID && trip.date.includes(currentYear) && trip.status === 'approved';
+    });
+    const getYearlyTotal = getAllUserTripsThisYear.reduce((total, trip) => {
+      destinationData.forEach(destination => {
+        if (trip.destinationID === destination.id) {
+          let tripFlightCost = destination.estimatedFlightCostPerPerson * trip.travelers;
+          let tripLodgingCost = destination.estimatedLodgingCostPerDay * trip.duration * trip.travelers;
+          let travelAgentFee = (tripFlightCost + tripLodgingCost) * .1;
+          total += tripFlightCost + tripLodgingCost + travelAgentFee;
+        }
+      });
+      return total;
+    }, 0);
+    return getYearlyTotal.toFixed(2);
+  }
 }

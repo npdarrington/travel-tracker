@@ -12,6 +12,7 @@ import moment from 'moment';
 let currentTraveler, todaysDate;
 let allTripsData = [];
 let allDestinationsData = [];
+
 const submitNewTripBtn = document.querySelector('#btnSubmit');
 
 const getAllInfoOnLogin = () => {
