@@ -1,14 +1,19 @@
 .travel-background {
   @include displayFlexWithPaddingAndMargin(20px 40px);
   justify-content: center;
-  position: relative;
   background: url(../images/travel-tracker-default-bg.jpg) no-repeat center;
   background-size: cover;
   height: 70vh;
+}
+
+.form-submission {
+  @include displayFlexWithPaddingAndMargin(10 20px, 0, column);
+  align-content: center;
+  justify-items: center;
+  background-color: whitesmoke;
 
   h2 {
-    position: absolute;
-    top: 75%;
+    text-align: center;
   }
 
   .new-trip {
@@ -16,9 +21,6 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    position: absolute;
-    top: 85%;
-    background-color: white;
     opacity: 0.8;
     border: 1px solid black;
     border-radius: 10px;
@@ -30,8 +32,12 @@
     }
 
     form > input {
-      width: 175px;
+      width: 125px;
       margin-left: 5px;
+    }
+
+    form > #new-trip-duration, form > #new-trip-travelers {
+      width: 60px;
     }
   }
 }
