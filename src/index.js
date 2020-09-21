@@ -36,4 +36,22 @@ const getAllInfoOnLogin = () => {
     });
 }
 
+const newTripSubmission = () => {
+  let selectedDate = document.querySelector('#new-trip-date').value;
+  let getDestinationID = document.querySelector('#new-trip-destination').value;
+  let getTravelerCount = document.querySelector('#new-trip-travelers').value;
+  let getDuration = document.querySelector('#new-trip-duration').value;
+  let newTripEntry = {
+    id: Date.now(),
+    userID: currentTraveler.id,
+    destinationID: getDestinationID,
+    date: moment(new Date(selectedDate)).format('YYYY/MM/DD'),
+    travelers: getTravelerCount, 
+    duration: getDuration,
+    status: 'pending',
+    suggestedActivities: []
+  }
+  // insert fetch call here with newTripEntry as argument
+}
+
 window.addEventListener('load', getAllInfoOnLogin);
