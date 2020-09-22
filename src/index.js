@@ -42,23 +42,14 @@ const getAllInfoOnLogin = () => {
 
 const calculateTripSelectionPricing = () => {
   let selectedDate = document.querySelector('#new-trip-date').value;
-  let getDestinationID = document.querySelector('#new-trip-destination').value;
-  let getTravelerCount = document.querySelector('#new-trip-travelers').value;
-  let getDuration = document.querySelector('#new-trip-duration').value;
+  let destinationID = document.querySelector('#new-trip-destination').value;
+  let travelerCount = document.querySelector('#new-trip-travelers').value;
+  let tripDuration = document.querySelector('#new-trip-duration').value;
   const tripStatusMessage = document.querySelector('.new-trip-status');
-  newTripEntry = {
-    id: Date.now(),
-    userID: +currentTraveler.id,
-    destinationID: +getDestinationID,
-    date: moment.utc((new Date(selectedDate))).format('YYYY/MM/DD'),
-    travelers: +getTravelerCount, 
-    duration: +getDuration,
-    status: 'pending',
-    suggestedActivities: []
-  };
+  newTripEntry = buildNewTripObject(destinationID, selectedDate, travelerCount, tripDuration);
   let temporaryTrip = new Trip(newTripEntry);
   let temporaryPrice = temporaryTrip.calculateTripPrice(allDestinationsData);
-  if (selectedDate !== '' && getDestinationID !== -1 && getTravelerCount > 0 && getDuration > 0) {
+  if (selectedDate !== '' && destinationID !== -1 && travelerCount > 0 && tripDuration > 0) {
     tripStatusMessage.innerText = `The calculated cost for this trip is ${temporaryPrice}`;
   } else {
     tripStatusMessage.innerText = `Please fill out all the date, number of travelers, trip duration and a trip location to see a calculated price`;
@@ -67,6 +58,19 @@ const calculateTripSelectionPricing = () => {
 
 const newTripSubmission = () => {
   fetches.postNewlyBookedTrip(newTripEntry);
+}
+
+const buildNewTripObject = (destinationID, selectedDate, travelerCount, tripDuration) => {
+  return  {
+    id: Date.now(),
+    userID: +currentTraveler.id,
+    destinationID: +destinationID,
+    date: moment.utc((new Date(selectedDate))).format('YYYY/MM/DD'),
+    travelers: +travelerCount, 
+    duration: +tripDuration,
+    status: 'pending',
+    suggestedActivities: []
+  };
 }
 
 window.addEventListener('load', getAllInfoOnLogin);
