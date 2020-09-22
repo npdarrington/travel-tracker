@@ -14,9 +14,16 @@ let allTripsData = [];
 let allDestinationsData = [];
 let newTripEntry;
 
+const loginBtn = document.querySelector('#btn-login-submit');
 const submitNewTripBtn = document.querySelector('#btnSubmit');
 const newTripSection = document.querySelector('.new-trip');
 const headerSection = document.querySelector('header');
+
+const validateLogin = () => {
+  const usernameValue =  document.querySelector('#username').value;
+  const passwordValue =  document.querySelector('#password').value;
+  getAllInfoOnLogin();
+}
 
 const getAllInfoOnLogin = () => {
   let allFetchData = [
@@ -131,7 +138,8 @@ const navigateTripTimeline = (event) => {
   }
 }
 
-window.addEventListener('load', getAllInfoOnLogin);
+// window.addEventListener('load', getAllInfoOnLogin);
+travelerLoginBtn.addEventListener('click')
 submitNewTripBtn.addEventListener('click', newTripSubmission);
 headerSection.addEventListener('click', navigateTripTimeline);
 newTripSection.addEventListener('change', calculateTripSelectionPricing);
