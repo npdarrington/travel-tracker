@@ -56,9 +56,10 @@ const postNewlyBookedTrip = tripInformation => {
     },
     body: JSON.stringify(tripInformation)
   })
-    .then(response => response.json())
-    .then(data => console.log('success:', data))
-    .catch(err => console.log('failed', err.message));
+    .then(response => {
+      return (response.ok) ? `success` : `failed`
+    })
+    .catch(() => `failed`);
 }
 
 export default {

@@ -44,6 +44,9 @@ export default class Traveler {
       });
       return total;
     }, 0);
-    return getYearlyTotal.toFixed(2);
+    return getYearlyTotal.toLocaleString(undefined, {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
   }
 }

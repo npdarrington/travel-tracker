@@ -25,7 +25,14 @@ const domUpdates = {
 
   populateDestinationsOnDOM() {
     let targetDropDownSelect = document.querySelector('#new-trip-destination');
-    this.allDestinationData.forEach(destination => {
+    let sortDestinations = this.allDestinationData.sort((destination1, destination2) => {
+      if (destination1.destination < destination2.destination) {
+        return -1
+      } else {
+        return 1
+      }
+    })
+    sortDestinations.forEach(destination => {
       let newDestinationOption = `<option value=${destination.id}>${destination.destination}</option>`;
       targetDropDownSelect.insertAdjacentHTML("beforeend", newDestinationOption);
     });
@@ -60,8 +67,8 @@ const domUpdates = {
           </article>
           <article class="trip-details">
             <h4>${destinationData.destination}</h4>
-            <h4>Booked for ${trip.date} with a ${trip.duration} day(s)</h4>
-            <h4>Scheduled with ${trip.travelers} traveler(s)</h4>
+            <h4>Booked for ${trip.date} with a duration of ${trip.duration} day(s)</h4>
+            <h4>Traveling with ${trip.travelers} traveler(s)</h4>
           </article>
         </section>
       </article>
