@@ -34,7 +34,7 @@ const getAllInfoOnLogin = () => {
         let newDestination = new Destination(destination);
         allDestinationsData.push(newDestination);
       });
-      currentTraveler = new Traveler(data[2][2]);
+      currentTraveler = new Traveler(data[2][Math.floor(Math.random() * data[2].length)]);
       todaysDate = moment().format('YYYY/MM/DD');
       domUpdates.setGlobalData(currentTraveler, todaysDate, allTripsData, allDestinationsData);
       domUpdates.updatePageOnLogin();
@@ -56,7 +56,16 @@ const calculateTripSelectionPricing = () => {
 }
 
 const newTripSubmission = () => {
-  fetches.postNewlyBookedTrip(newTripEntry);
+  let newTripMessage = document.querySelector(`.new-trip-status`);
+  let newTripFetchMessage = fetches.postNewlyBookedTrip(newTripEntry);
+  newTripFetchMessage.then(response => {
+    if (response === 'success') {
+      newTripMessage.innerText = `Your trip has been successfully booked! Our Travel Agent will contact you shortly to finalize the details.`;
+    } else {
+      newTripMessage.innerText = `Something went wrong while booking your new trip! We apologize for any errors. Please refresh and try again or contact one of our Travel Agents to complete.`;
+    }
+  });
+  submitNewTripBtn.disabled = true;
 }
 
 const buildNewTripObject = (destinationID, selectedDate, travelerCount, tripDuration) => {
