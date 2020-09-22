@@ -41,18 +41,16 @@ const getAllInfoOnLogin = () => {
 }
 
 const calculateTripSelectionPricing = () => {
-  let selectedDate = document.querySelector('#new-trip-date').value;
   let destinationID = document.querySelector('#new-trip-destination').value;
+  let selectedDate = document.querySelector('#new-trip-date').value;
   let travelerCount = document.querySelector('#new-trip-travelers').value;
   let tripDuration = document.querySelector('#new-trip-duration').value;
   const tripStatusMessage = document.querySelector('.new-trip-status');
-  newTripEntry = buildNewTripObject(destinationID, selectedDate, travelerCount, tripDuration);
-  let temporaryTrip = new Trip(newTripEntry);
-  let temporaryPrice = temporaryTrip.calculateTripPrice(allDestinationsData);
-  if (selectedDate !== '' && destinationID !== -1 && travelerCount > 0 && tripDuration > 0) {
-    tripStatusMessage.innerText = `The calculated cost for this trip is ${temporaryPrice}`;
+  if ((selectedDate !== '' && new Date(selectedDate) > new Date(todaysDate)) && destinationID !== '-1' && travelerCount > 0 && tripDuration > 0) {
+    tripStatusMessage.innerText = displayEstimatedTripPricing(destinationID, selectedDate, travelerCount, tripDuration);
   } else {
     tripStatusMessage.innerText = `Please fill out all the date, number of travelers, trip duration and a trip location to see a calculated price`;
+    submitNewTripBtn.disabled = true;
   }
 }
 
@@ -73,11 +71,14 @@ const buildNewTripObject = (destinationID, selectedDate, travelerCount, tripDura
   };
 }
 
+const displayEstimatedTripPricing = (destinationID, selectedDate, travelerCount, tripDuration) => {
+  newTripEntry = buildNewTripObject(destinationID, selectedDate, travelerCount, tripDuration);
+  let temporaryTrip = new Trip(newTripEntry);
+  let temporaryPrice = temporaryTrip.calculateTripPrice(allDestinationsData);
+  submitNewTripBtn.disabled = false;
+  return `The calculated cost for this trip is ${temporaryPrice}. Let's go!`;
+}
+
 window.addEventListener('load', getAllInfoOnLogin);
 submitNewTripBtn.addEventListener('click', newTripSubmission);
-newTripSection.addEventListener('change', function() {
-  let destinationSelectionValue = document.querySelector('#new-trip-destination').value;
-  if (destinationSelectionValue !== '-1') {
-    calculateTripSelectionPricing();
-  }
-});
+newTripSection.addEventListener('change', calculateTripSelectionPricing);
