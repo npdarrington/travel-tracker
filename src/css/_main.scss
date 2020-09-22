@@ -1,5 +1,5 @@
 .travel-background {
-  @include displayFlexWithPaddingAndMargin(20px 40px);
+  @include displayFlexWithPaddingAndMargin(20px);
   justify-content: center;
   background: url(../images/travel-tracker-default-bg.jpg) no-repeat center;
   background-size: cover;
