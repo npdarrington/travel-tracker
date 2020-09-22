@@ -68,7 +68,7 @@ describe('Trip', () => {
 
   describe('Calculate Trip Price', () => {
     it('Should be able to tell the user how much the trip is going to cost', () => {
-      expect(trip.calculateTripPrice(destinationData)).to.eq('20295.00');
+      expect(trip.calculateTripPrice(destinationData)).to.eq('6435.00');
     });
   });
 
