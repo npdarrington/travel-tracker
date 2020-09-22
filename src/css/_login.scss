@@ -6,4 +6,25 @@
   justify-items: center;
   height: 90vh;
   z-index: 1000;
+
+  form {
+    @include displayFlexWithPaddingAndMargin(40px, 0, column);
+    align-items: center;
+    width: 60%;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: $blue-text-color;
+
+    img {
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    input {
+      margin: 10px 0;
+    }
+  }
 }
