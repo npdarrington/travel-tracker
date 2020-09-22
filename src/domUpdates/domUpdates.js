@@ -60,7 +60,7 @@ const domUpdates = {
           </article>
           <article class="trip-details">
             <h4>${destinationData.destination}</h4>
-            <h4>Booked for ${trip.date} with a ${trip.duration} day(s)</h4>
+            <h4>Booked for ${trip.date} with a duration of ${trip.duration} day(s)</h4>
             <h4>Scheduled with ${trip.travelers} traveler(s)</h4>
           </article>
         </section>
