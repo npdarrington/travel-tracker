@@ -61,11 +61,38 @@ const newTripSubmission = () => {
   newTripFetchMessage.then(response => {
     if (response === 'success') {
       newTripMessage.innerText = `Your trip has been successfully booked! Our Travel Agent will contact you shortly to finalize the details.`;
+      updateUserDashboard(currentTraveler.id);
     } else {
       newTripMessage.innerText = `Something went wrong while booking your new trip! We apologize for any errors. Please refresh and try again or contact one of our Travel Agents to complete.`;
     }
   });
   submitNewTripBtn.disabled = true;
+}
+
+const updateUserDashboard = (userID) => {
+  let allTripsData = [];
+  let allDestinationsData = [];
+  let allFetchData = [
+    fetches.getAllTrips(),
+    fetches.getAllDestinations(),
+    fetches.getSingleTraveler(userID),
+  ]
+  Promise.all(allFetchData)
+    .then(data => {
+      data[0].forEach(trip => {
+        let newTrip = new Trip(trip);
+        allTripsData.push(newTrip);
+      })
+      data[1].forEach(destination => {
+        let newDestination = new Destination(destination);
+        allDestinationsData.push(newDestination);
+      });
+      currentTraveler = new Traveler(data[2]);
+      todaysDate = moment().format('YYYY/MM/DD');
+      domUpdates.setGlobalData(currentTraveler, todaysDate, allTripsData, allDestinationsData);
+      domUpdates.updatePageOnLogin();
+    })
+    .then(() => domUpdates.displayAllTravelerTrips('pending'));
 }
 
 const buildNewTripObject = (destinationID, selectedDate, travelerCount, tripDuration) => {
