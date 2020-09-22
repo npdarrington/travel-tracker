@@ -25,20 +25,22 @@ const validateLogin = () => {
   const loginMessage = document.querySelector('.login-message');
   const usernameValue =  document.querySelector('#username').value.trim();
   const passwordValue =  document.querySelector('#password').value.trim();
-  let splitUserNameAndID = splitUserName(8)(usernameValue);
-  if (splitUserNameAndID[0] === 'traveler' && splitUserNameAndID[1] > 0 && splitUserNameAndID[1] < 51 && passwordValue === 'travel2020') {
+  let splitUserName = usernameValue.slice(0, 8);
+  let splitUserID = usernameValue.substring(8);
+  if (splitUserName === 'traveler' && splitUserID > 0 && splitUserID < 51 && passwordValue === 'travel2020') {
     loginMessage.innerText = `Success! Taking you to your dashboard`;
     setTimeout(function() {
       loginFormSection.classList.add('hidden');
       travelTrackerMainBody.classList.remove('hidden');
-      getAllInfoOnLogin(splitUserNameAndID[1]);
+      getAllInfoOnLogin(splitUserID);
     }, 1000);
   } else {
     loginMessage.innerText = `Something went wrong, please check your username and password and try again`;
+    setTimeout(() => {
+      loginMessage.innerText = '';
+    }, 3000);
   }
 }
-
-const splitUserName = index => x => [x.slice(0, index), x.slice(index)];
 
 const getAllInfoOnLogin = (userID) => {
   let allFetchData = [
