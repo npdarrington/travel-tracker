@@ -14,15 +14,39 @@ let allTripsData = [];
 let allDestinationsData = [];
 let newTripEntry;
 
+const travelerLoginBtn = document.querySelector('#btn-login-submit');
 const submitNewTripBtn = document.querySelector('#btnSubmit');
 const newTripSection = document.querySelector('.new-trip');
 const headerSection = document.querySelector('header');
+const loginFormSection = document.querySelector('.login-form');
+const travelTrackerMainBody = document.querySelector('.container');
 
-const getAllInfoOnLogin = () => {
+const validateLogin = () => {
+  const loginMessage = document.querySelector('.login-message');
+  const usernameValue =  document.querySelector('#username').value.trim();
+  const passwordValue =  document.querySelector('#password').value.trim();
+  let splitUserName = usernameValue.slice(0, 8);
+  let splitUserID = usernameValue.substring(8);
+  if (splitUserName === 'traveler' && splitUserID > 0 && splitUserID < 51 && passwordValue === 'travel2020') {
+    loginMessage.innerText = `Success! Taking you to your dashboard`;
+    setTimeout(function() {
+      loginFormSection.classList.add('hidden');
+      travelTrackerMainBody.classList.remove('hidden');
+      getAllInfoOnLogin(splitUserID);
+    }, 1000);
+  } else {
+    loginMessage.innerText = `Something went wrong, please check your username and password and try again`;
+    setTimeout(() => {
+      loginMessage.innerText = '';
+    }, 3000);
+  }
+}
+
+const getAllInfoOnLogin = (userID) => {
   let allFetchData = [
     fetches.getAllTrips(),
     fetches.getAllDestinations(),
-    fetches.getAllTravelers(),
+    fetches.getSingleTraveler(userID),
   ]
   Promise.all(allFetchData)
     .then(data => {
@@ -34,7 +58,7 @@ const getAllInfoOnLogin = () => {
         let newDestination = new Destination(destination);
         allDestinationsData.push(newDestination);
       });
-      currentTraveler = new Traveler(data[2][Math.floor(Math.random() * data[2].length)]);
+      currentTraveler = new Traveler(data[2]);
       todaysDate = moment().format('YYYY/MM/DD');
       domUpdates.setGlobalData(currentTraveler, todaysDate, allTripsData, allDestinationsData);
       domUpdates.updatePageOnLogin();
@@ -131,7 +155,7 @@ const navigateTripTimeline = (event) => {
   }
 }
 
-window.addEventListener('load', getAllInfoOnLogin);
+travelerLoginBtn.addEventListener('click', validateLogin)
 submitNewTripBtn.addEventListener('click', newTripSubmission);
 headerSection.addEventListener('click', navigateTripTimeline);
 newTripSection.addEventListener('change', calculateTripSelectionPricing);
