@@ -2,9 +2,14 @@
 @import './_variables';
 @import './_mixins';
 @import './_header';
+@import './login';
 @import './_main';
 @import './_trip-card';
 
 * {
   font-family: $monserrat-font;
+}
+
+.hidden {
+  display: none!important;
 }

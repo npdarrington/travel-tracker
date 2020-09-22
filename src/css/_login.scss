@@ -1,0 +1,57 @@
+.login-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  justify-items: center;
+  height: 90vh;
+  z-index: 1000;
+  color: white;
+
+  form {
+    @include displayFlexWithPaddingAndMargin(40px, 0, column);
+    align-items: center;
+    width: 60%;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: $blue-text-color;
+
+    img {
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    input, input[type=button] {
+      margin: 10px 0;
+      width: 50%;
+    }
+
+    input {
+      height: 30px;
+      text-align: center;
+    }
+
+    input[type=button] {
+      background-color: $orange-text-color;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 5px;
+      opacity: 1;
+
+      &:hover {
+        background-color: $mellow-orange-color;
+      }
+
+      &:disabled {
+        color: black;
+        background-color: whitesmoke;
+        cursor: default;
+        opacity: .7;
+      }
+    }
+  }
+}
