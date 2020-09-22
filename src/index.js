@@ -56,6 +56,13 @@ const calculateTripSelectionPricing = () => {
     status: 'pending',
     suggestedActivities: []
   };
+  let temporaryTrip = new Trip(newTripEntry);
+  let temporaryPrice = temporaryTrip.calculateTripPrice(allDestinationsData);
+  if (selectedDate !== '' && getDestinationID !== -1 && getTravelerCount > 0 && getDuration > 0) {
+    tripStatusMessage.innerText = `The calculated cost for this trip is ${temporaryPrice}`;
+  } else {
+    tripStatusMessage.innerText = `Please fill out all the date, number of travelers, trip duration and a trip location to see a calculated price`;
+  }
 }
 
 const newTripSubmission = () => {
