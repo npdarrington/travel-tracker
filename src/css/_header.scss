@@ -1,5 +1,5 @@
 header {
-  @include displayFlexWithPaddingAndMargin(10px);
+  @include displayFlexWithPaddingAndMargin(10px 0);
   align-items: center;
   width: 100%;
   height: auto;
@@ -10,6 +10,7 @@ header {
 
     img {
       width: 100%;
+      margin-left: 5px;
     }
   }
 
