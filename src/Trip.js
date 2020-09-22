@@ -19,7 +19,10 @@ export default class Trip {
     let estimatedFlightCost = foundTrip.estimatedFlightCostPerPerson * this.travelers;
     let estimatedLodgingCost = foundTrip.estimatedLodgingCostPerDay * this.duration * this.travelers;
     let travelAgentFee = (estimatedFlightCost + estimatedLodgingCost) * .1;
-    return (estimatedFlightCost + estimatedLodgingCost + travelAgentFee).toFixed(2);
+    return (estimatedFlightCost + estimatedLodgingCost + travelAgentFee).toLocaleString(undefined, {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
   }
 
   editTrip(id, userID, destinationID, date, travelers = 1, duration = 1, status = 'pending') {
