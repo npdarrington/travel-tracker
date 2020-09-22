@@ -12,8 +12,10 @@ import moment from 'moment';
 let currentTraveler, todaysDate;
 let allTripsData = [];
 let allDestinationsData = [];
+let newTripEntry;
 
 const submitNewTripBtn = document.querySelector('#btnSubmit');
+const newTripSection = document.querySelector('.new-trip');
 
 const getAllInfoOnLogin = () => {
   let allFetchData = [
@@ -38,12 +40,13 @@ const getAllInfoOnLogin = () => {
     });
 }
 
-const newTripSubmission = () => {
+const calculateTripSelectionPricing = () => {
   let selectedDate = document.querySelector('#new-trip-date').value;
   let getDestinationID = document.querySelector('#new-trip-destination').value;
   let getTravelerCount = document.querySelector('#new-trip-travelers').value;
   let getDuration = document.querySelector('#new-trip-duration').value;
-  let newTripEntry = {
+  const tripStatusMessage = document.querySelector('.new-trip-status');
+  newTripEntry = {
     id: Date.now(),
     userID: +currentTraveler.id,
     destinationID: +getDestinationID,
@@ -52,9 +55,18 @@ const newTripSubmission = () => {
     duration: +getDuration,
     status: 'pending',
     suggestedActivities: []
-  }
+  };
+}
+
+const newTripSubmission = () => {
   fetches.postNewlyBookedTrip(newTripEntry);
 }
 
 window.addEventListener('load', getAllInfoOnLogin);
 submitNewTripBtn.addEventListener('click', newTripSubmission);
+newTripSection.addEventListener('change', function() {
+  let destinationSelectionValue = document.querySelector('#new-trip-destination').value;
+  if (destinationSelectionValue !== '-1') {
+    calculateTripSelectionPricing();
+  }
+});
