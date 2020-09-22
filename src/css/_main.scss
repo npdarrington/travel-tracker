@@ -112,7 +112,7 @@
     flex-wrap: wrap;
 
     .trip-card {
-      @include displayFlexWithPaddingAndMargin(10px, 20px, column);
+      @include displayFlexWithPaddingAndMargin(0, 20px, column);
       align-content: center;
       background-color: white;
       min-width: 300px;
@@ -126,11 +126,12 @@
   
       img {
         width: 100%;
+        margin-bottom: 1px solid black;
       }
   
       .trip-details {
         @include displayFlexWithPaddingAndMargin(0, 0, column);
-        text-align: center
+        text-align: center;
       }
     }
   }
