@@ -9,6 +9,8 @@
 
 .form-submission {
   @include displayFlexWithPaddingAndMargin(10px 20px, 0, column);
+  background-color: $blue-text-color;
+  color: white;
 
   h2 {
     text-align: center;
@@ -31,8 +33,21 @@
     }
 
     input {
-      width: 125px;
+      width: 150px;
+      height: 25px;
       margin-left: 5px;
+    }
+
+    select {
+      height: 33px;
+    }
+
+    input[type=button] {
+      background-color: $orange-text-color;
+      color: white;
+      height: 30px;
+      border: none;
+      border-radius: 5px;
     }
 
     #new-trip-duration, #new-trip-travelers {
