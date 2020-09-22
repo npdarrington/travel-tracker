@@ -18,21 +18,24 @@ const travelerLoginBtn = document.querySelector('#btn-login-submit');
 const submitNewTripBtn = document.querySelector('#btnSubmit');
 const newTripSection = document.querySelector('.new-trip');
 const headerSection = document.querySelector('header');
+const loginFormSection = document.querySelector('.login-form');
+const travelTrackerMainBody = document.querySelector('.container');
 
 const validateLogin = () => {
+  const loginMessage = document.querySelector('.login-message');
   const usernameValue =  document.querySelector('#username').value.trim();
   const passwordValue =  document.querySelector('#password').value.trim();
   let splitUserNameAndID = splitUserName(8)(usernameValue);
   if (splitUserNameAndID[0] === 'traveler' && splitUserNameAndID[1] > 0 && splitUserNameAndID[1] < 51 && passwordValue === 'travel2020') {
-    console.log('successful login');
+    loginMessage.innerText = `Success! Taking you to your dashboard`;
     setTimeout(function() {
-      
+      loginFormSection.classList.add('hidden');
+      travelTrackerMainBody.classList.remove('hidden');
       getAllInfoOnLogin(splitUserNameAndID[1]);
     }, 1000);
   } else {
-    console.log('unsuccessful login');
+    loginMessage.innerText = `Something went wrong, please check your username and password and try again`;
   }
-  console.log(splitUserNameAndID);
 }
 
 const splitUserName = index => x => [x.slice(0, index), x.slice(index)];
