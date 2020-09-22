@@ -17,9 +17,9 @@ export default class Trip {
   calculateTripPrice(destinationData) {
     const foundTrip = destinationData.find(destination => destination.id === this.destinationID);
     let estimatedFlightCost = foundTrip.estimatedFlightCostPerPerson * this.travelers;
-    let estimatedLodgingCost = foundTrip.estimatedLodgingCostPerDay * this.duration * this.duration;
-    let travelAgentFee = (estimatedFlightCost + estimatedLodgingCost) * .10;
-    return ((((estimatedFlightCost + estimatedLodgingCost) + travelAgentFee) * 100) / 100).toFixed(2);
+    let estimatedLodgingCost = foundTrip.estimatedLodgingCostPerDay * this.duration * this.travelers;
+    let travelAgentFee = (estimatedFlightCost + estimatedLodgingCost) * .1;
+    return (estimatedFlightCost + estimatedLodgingCost + travelAgentFee).toFixed(2);
   }
 
   editTrip(id, userID, destinationID, date, travelers = 1, duration = 1, status = 'pending') {

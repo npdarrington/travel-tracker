@@ -12,8 +12,10 @@ import moment from 'moment';
 let currentTraveler, todaysDate;
 let allTripsData = [];
 let allDestinationsData = [];
+let newTripEntry;
 
 const submitNewTripBtn = document.querySelector('#btnSubmit');
+const newTripSection = document.querySelector('.new-trip');
 
 const getAllInfoOnLogin = () => {
   let allFetchData = [
@@ -38,23 +40,45 @@ const getAllInfoOnLogin = () => {
     });
 }
 
-const newTripSubmission = () => {
+const calculateTripSelectionPricing = () => {
+  let destinationID = document.querySelector('#new-trip-destination').value;
   let selectedDate = document.querySelector('#new-trip-date').value;
-  let getDestinationID = document.querySelector('#new-trip-destination').value;
-  let getTravelerCount = document.querySelector('#new-trip-travelers').value;
-  let getDuration = document.querySelector('#new-trip-duration').value;
-  let newTripEntry = {
+  let travelerCount = document.querySelector('#new-trip-travelers').value;
+  let tripDuration = document.querySelector('#new-trip-duration').value;
+  const tripStatusMessage = document.querySelector('.new-trip-status');
+  if ((selectedDate !== '' && new Date(selectedDate) > new Date(todaysDate)) && destinationID !== '-1' && travelerCount > 0 && tripDuration > 0) {
+    tripStatusMessage.innerText = displayEstimatedTripPricing(destinationID, selectedDate, travelerCount, tripDuration);
+  } else {
+    tripStatusMessage.innerText = `Please fill out all the date, number of travelers, trip duration and a trip location to see a calculated price`;
+    submitNewTripBtn.disabled = true;
+  }
+}
+
+const newTripSubmission = () => {
+  fetches.postNewlyBookedTrip(newTripEntry);
+}
+
+const buildNewTripObject = (destinationID, selectedDate, travelerCount, tripDuration) => {
+  return  {
     id: Date.now(),
     userID: +currentTraveler.id,
-    destinationID: +getDestinationID,
+    destinationID: +destinationID,
     date: moment.utc((new Date(selectedDate))).format('YYYY/MM/DD'),
-    travelers: +getTravelerCount, 
-    duration: +getDuration,
+    travelers: +travelerCount, 
+    duration: +tripDuration,
     status: 'pending',
     suggestedActivities: []
-  }
-  fetches.postNewlyBookedTrip(newTripEntry);
+  };
+}
+
+const displayEstimatedTripPricing = (destinationID, selectedDate, travelerCount, tripDuration) => {
+  newTripEntry = buildNewTripObject(destinationID, selectedDate, travelerCount, tripDuration);
+  let temporaryTrip = new Trip(newTripEntry);
+  let temporaryPrice = temporaryTrip.calculateTripPrice(allDestinationsData);
+  submitNewTripBtn.disabled = false;
+  return `The calculated cost for this trip is ${temporaryPrice}. Let's go!`;
 }
 
 window.addEventListener('load', getAllInfoOnLogin);
 submitNewTripBtn.addEventListener('click', newTripSubmission);
+newTripSection.addEventListener('change', calculateTripSelectionPricing);
