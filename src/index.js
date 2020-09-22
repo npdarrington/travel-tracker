@@ -70,6 +70,8 @@ const newTripSubmission = () => {
 }
 
 const updateUserDashboard = (userID) => {
+  let allTripsData = [];
+  let allDestinationsData = [];
   let allFetchData = [
     fetches.getAllTrips(),
     fetches.getAllDestinations(),
@@ -85,14 +87,12 @@ const updateUserDashboard = (userID) => {
         let newDestination = new Destination(destination);
         allDestinationsData.push(newDestination);
       });
-      console.log(currentTraveler);
       currentTraveler = new Traveler(data[2]);
-      console.log(currentTraveler);
       todaysDate = moment().format('YYYY/MM/DD');
       domUpdates.setGlobalData(currentTraveler, todaysDate, allTripsData, allDestinationsData);
       domUpdates.updatePageOnLogin();
-    });
-    domUpdates.displayAllTravelerTrips('pending');
+    })
+    .then(() => domUpdates.displayAllTravelerTrips('pending'));
 }
 
 const buildNewTripObject = (destinationID, selectedDate, travelerCount, tripDuration) => {
