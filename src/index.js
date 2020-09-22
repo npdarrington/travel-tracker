@@ -155,7 +155,6 @@ const navigateTripTimeline = (event) => {
   }
 }
 
-// window.addEventListener('load', getAllInfoOnLogin);
 travelerLoginBtn.addEventListener('click', validateLogin)
 submitNewTripBtn.addEventListener('click', newTripSubmission);
 headerSection.addEventListener('click', navigateTripTimeline);
