@@ -61,6 +61,10 @@
   }
 }
 
+.new-trip-status {
+  text-align: center;
+}
+
 .trip-organizer {
   @include displayFlexWithPaddingAndMargin(20px, 10px, column);
   margin-top: 20px;
