@@ -23,8 +23,29 @@
       text-align: center;
     }
 
-    input {
+    input, input[type=button] {
       margin: 10px 0;
+      width: 50%;
+    }
+
+    input[type=button] {
+      background-color: $orange-text-color;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      opacity: 1;
+
+      &:hover {
+        background-color: $mellow-orange-color;
+      }
+
+      &:disabled {
+        color: black;
+        background-color: whitesmoke;
+        cursor: default;
+        opacity: .7;
+      }
     }
   }
 }
