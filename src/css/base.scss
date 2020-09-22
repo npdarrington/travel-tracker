@@ -4,3 +4,7 @@
 @import './_header';
 @import './_main';
 @import './_trip-card';
+
+* {
+  font-family: $monserrat-font;
+}
