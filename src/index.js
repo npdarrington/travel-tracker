@@ -16,6 +16,7 @@ let newTripEntry;
 
 const submitNewTripBtn = document.querySelector('#btnSubmit');
 const newTripSection = document.querySelector('.new-trip');
+const headerSection = document.querySelector('header');
 
 const getAllInfoOnLogin = () => {
   let allFetchData = [
@@ -33,7 +34,7 @@ const getAllInfoOnLogin = () => {
         let newDestination = new Destination(destination);
         allDestinationsData.push(newDestination);
       });
-      currentTraveler = new Traveler(data[2][Math.floor(Math.random() * data[2].length)]);
+      currentTraveler = new Traveler(data[2][2]);
       todaysDate = moment().format('YYYY/MM/DD');
       domUpdates.setGlobalData(currentTraveler, todaysDate, allTripsData, allDestinationsData);
       domUpdates.updatePageOnLogin();
@@ -79,6 +80,22 @@ const displayEstimatedTripPricing = (destinationID, selectedDate, travelerCount,
   return `The calculated cost for this trip is ${temporaryPrice}. Let's go!`;
 }
 
+const navigateTripTimeline = (event) => {
+  if (event.target.classList.contains('past')) {
+    domUpdates.displayAllTravelerTrips('past');
+  }
+  if (event.target.classList.contains('current')) {
+    domUpdates.displayAllTravelerTrips('current');
+  }
+  if (event.target.classList.contains('upcoming')) {
+    domUpdates.displayAllTravelerTrips('upcoming');
+  } 
+  if (event.target.classList.contains('pending')) {
+    domUpdates.displayAllTravelerTrips('pending');
+  }
+}
+
 window.addEventListener('load', getAllInfoOnLogin);
 submitNewTripBtn.addEventListener('click', newTripSubmission);
+headerSection.addEventListener('click', navigateTripTimeline);
 newTripSection.addEventListener('change', calculateTripSelectionPricing);

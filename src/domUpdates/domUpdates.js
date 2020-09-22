@@ -38,12 +38,13 @@ const domUpdates = {
   displayAllTravelerTrips(time) {
     let targetDOMBody = document.querySelector(`.trip-organizer-cards`);
     let targetDOMTitle = document.querySelector(`.trip-organizer-title > h3`);
+    targetDOMBody.innerText = '';
     if (!this.currentTraveler[`${time}Trips`].length) {
       targetDOMTitle.innerText = `You have no ${time} trips`;
     } else {
+      targetDOMTitle.innerText = `Your ${time} trips`;
       this.currentTraveler[`${time}Trips`].forEach(trip => {
         let displayTrip = this.buildHTMLForTrips(trip);
-        targetDOMTitle.innerText = `Your current ${time} trips`;
         targetDOMBody.insertAdjacentHTML('beforeend', displayTrip);
       });
     }
