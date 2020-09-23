@@ -73,7 +73,7 @@ describe('Traveler', () => {
   
     it('Sort a travelers destination trip data into upcoming trips for current trips that have been approved', () => {
       traveler.sortTripsByStatus("2019/09/18", allTrips);
-      expect(traveler.upcomingTrips[0]).to.deep.eq(allTrips[0, 5]);
+      expect(traveler.upcomingTrips[0]).to.deep.eq(allTrips[4, 0]);
     });
   
     it('Sort a travelers destination trip data into pending trips for current trips that have not been approved', () => {
@@ -84,7 +84,7 @@ describe('Traveler', () => {
 
   describe('Traveler getYTDTotal', () => {
     it('Should show how much a user has spent for the entire year, not including pending trips', () => {
-      expect(traveler.getYTDTotal('2020', allTrips, allDestinations)).to.eq('12595.00');
+      expect(traveler.getYTDTotal('2020', allTrips, allDestinations)).to.eq('12,595.00');
     });
   });
 });
