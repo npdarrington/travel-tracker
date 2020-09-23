@@ -32,6 +32,7 @@ const validateLogin = () => {
     setTimeout(function() {
       loginFormSection.classList.add('hidden');
       travelTrackerMainBody.classList.remove('hidden');
+      document.querySelector('header').classList.remove('hidden');
       getAllInfoOnLogin(splitUserID);
     }, 1000);
   } else {
