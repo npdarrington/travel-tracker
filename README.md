@@ -1,4 +1,4 @@
-# Can You Smell What's Cookin'?
+# Travel Tracker!
 
 ## Contributors
 - [Nathan Darrington](https://github.com/npdarrington)
