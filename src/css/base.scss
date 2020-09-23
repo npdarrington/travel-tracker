@@ -2,7 +2,7 @@
 @import './_variables';
 @import './_mixins';
 @import './_header';
-@import './login';
+@import './_login';
 @import './_main';
 @import './_trip-card';
 
@@ -12,4 +12,8 @@
 
 .hidden {
   display: none!important;
+}
+
+input:focus::placeholder {
+  color: transparent;
 }
